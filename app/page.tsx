@@ -32,7 +32,7 @@ export default function Home() {
 
           <div className="hero__inner">
             <Reveal variant="lines" as="div" delay={0.15}>
-              <span className="eyebrow">Estúdio criativo de arquitetura — {STUDIO.city}</span>
+              <span className="eyebrow">Estúdio criativo de arquitetura {STUDIO.city}</span>
             </Reveal>
 
             <h1 className="hero__wordmark">
@@ -116,7 +116,7 @@ export default function Home() {
                   </Reveal>
                   <Reveal delay={0.2}>
                     <p className="muted">
-                      Damos vida às suas ideias — seja na renderização de imagens, criação de vídeo,
+                      Damos vida às suas ideias. Seja na renderização de imagens, criação de vídeo,
                       diagramação de pranchas ou detalhamento de mobiliários. Comunicamo-nos com
                       clareza e profissionalismo para entregar imagens que vendem projetos,
                       conectando estética e estratégia visual para arquitetos e escritórios.
@@ -157,7 +157,7 @@ export default function Home() {
                     sizes="(max-width: 950px) 100vw, 40vw"
                   />
                   <figcaption>
-                    Amanda, Eduarda e Eduarda — as sócias por trás de cada entrega.
+                    Amanda, Eduarda B e Eduarda S. As sócias por trás de cada entrega.
                   </figcaption>
                 </figure>
               </Reveal>
@@ -180,7 +180,7 @@ export default function Home() {
               <Reveal delay={0.2}>
                 <p className="muted" style={{ maxWidth: "44ch", color: "inherit", opacity: 0.7 }}>
                   Quando as ideias são claramente definidas, comunicadas e sustentadas, melhores
-                  decisões são tomadas — e melhores projetos são construídos.
+                  decisões são tomadas e melhores projetos são construídos.
                 </p>
               </Reveal>
               <Reveal delay={0.28}>
@@ -207,7 +207,7 @@ export default function Home() {
               <Reveal delay={0.16}>
                 <p className="lead muted">
                   Oferecemos suporte modular e colaborativo, adaptável às diferentes etapas do
-                  projeto e localizações. Um apoio confiável e de alta qualidade — do conceito até a
+                  projeto e localizações. Um apoio confiável e de alta qualidade: do conceito até a
                   produção.
                 </p>
               </Reveal>
@@ -235,7 +235,7 @@ export default function Home() {
                 <p className="lead muted">
                   Nosso processo é pensado para trazer clareza, segurança e tranquilidade. Na AGES,
                   o cliente sabe exatamente onde está, o que está sendo desenvolvido e para onde o
-                  projeto está indo — do primeiro encontro à entrega final.
+                  projeto está indo, do primeiro encontro à entrega final.
                 </p>
               </Reveal>
             </div>
@@ -425,7 +425,7 @@ export default function Home() {
                 <Reveal delay={0.16}>
                   <p className="lead" style={{ opacity: 0.78, maxWidth: "38ch" }}>
                     Preencha o formulário ao lado. Ele nos ajuda a entender suas necessidades,
-                    prazos e como podemos apoiar você da melhor forma — para enviarmos uma proposta
+                    prazos e como podemos apoiar você da melhor forma, para enviarmos uma proposta
                     personalizada, pensada exatamente para o seu projeto.
                   </p>
                 </Reveal>
