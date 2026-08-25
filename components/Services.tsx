@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import Reveal from "./Reveal";
-import { SERVICES } from "@/lib/content";
+import type { Dictionary } from "@/lib/content";
 
-export default function Services() {
-  const [open, setOpen] = useState<string | null>(SERVICES[0].id);
+export default function Services({ t }: { t: Dictionary }) {
+  const [open, setOpen] = useState<string | null>(t.services.items[0].id);
 
   return (
     <div className="services">
-      {SERVICES.map((s, i) => {
+      {t.services.items.map((s, i) => {
         const isOpen = open === s.id;
         return (
           <Reveal key={s.id} delay={i * 0.06}>
@@ -36,7 +36,7 @@ export default function Services() {
                     </div>
 
                     <div>
-                      <span className="mini-label">O que fazemos</span>
+                      <span className="mini-label">{t.services.does}</span>
                       <ul className="tick-list">
                         {s.does.map((d) => (
                           <li key={d}>{d}</li>
@@ -45,7 +45,7 @@ export default function Services() {
                     </div>
 
                     <div>
-                      <span className="mini-label">Ideal para</span>
+                      <span className="mini-label">{t.services.idealFor}</span>
                       <ul className="tick-list">
                         {s.idealFor.map((d) => (
                           <li key={d}>{d}</li>

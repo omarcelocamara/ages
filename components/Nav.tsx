@@ -2,19 +2,20 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { PATHS, type Dictionary } from "@/lib/content";
 
-const LINKS = [
-  { href: "#estudio", label: "Estúdio" },
-  { href: "#servicos", label: "Serviços" },
-  { href: "#processo", label: "Processo" },
-  { href: "#portfolio", label: "Portfólio" },
-  { href: "#socias", label: "Sócias" },
-];
-
-export default function Nav() {
+export default function Nav({ t }: { t: Dictionary }) {
   const [stuck, setStuck] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
+
+  const links = [
+    { href: "#estudio", label: t.nav.studio },
+    { href: "#servicos", label: t.nav.services },
+    { href: "#processo", label: t.nav.process },
+    { href: "#portfolio", label: t.nav.works },
+    { href: "#socias", label: t.nav.team },
+  ];
 
   useEffect(() => {
     const onScroll = () => setStuck(window.scrollY > 40);
@@ -25,9 +26,9 @@ export default function Nav() {
 
   // Destaca no menu a seção que ocupa o centro da tela.
   useEffect(() => {
-    const sections = LINKS.map((l) => document.querySelector(l.href)).filter(
-      (el): el is Element => Boolean(el),
-    );
+    const sections = ["#estudio", "#servicos", "#processo", "#portfolio", "#socias"]
+      .map((h) => document.querySelector(h))
+      .filter((el): el is Element => Boolean(el));
     if (!sections.length) return;
 
     const observer = new IntersectionObserver(
@@ -56,11 +57,30 @@ export default function Nav() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  // Cada idioma é uma rota própria, então o alternador é um link comum:
+  // continua funcionando sem JS e pode ser compartilhado.
+  const langSwitch = (
+    <div className="lang" role="group" aria-label={t.lang === "pt" ? "Idioma" : "Language"}>
+      {(["pt", "en"] as const).map((code) => (
+        <a
+          key={code}
+          href={PATHS[code]}
+          className="lang__opt"
+          data-current={t.lang === code}
+          aria-current={t.lang === code ? "true" : undefined}
+          hrefLang={code}
+        >
+          {code.toUpperCase()}
+        </a>
+      ))}
+    </div>
+  );
+
   return (
     <>
       <header className={`nav ${stuck ? "nav--stuck" : ""}`}>
         <div className="nav__inner">
-          <a href="#topo" className="nav__logo" aria-label="AGES Creative Studio — início">
+          <a href={PATHS[t.lang]} className="nav__logo" aria-label={`${"AGES Creative Studio"}`}>
             <Image
               src="/logo/ages-mark-cream.png"
               alt="AGES Creative Studio"
@@ -70,37 +90,36 @@ export default function Nav() {
             />
           </a>
 
-          <nav className="nav__links" aria-label="Navegação principal">
-            {LINKS.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="nav__link"
-                data-active={active === l.href}
-              >
+          <nav className="nav__links" aria-label={t.lang === "pt" ? "Navegação principal" : "Main navigation"}>
+            {links.map((l) => (
+              <a key={l.href} href={l.href} className="nav__link" data-active={active === l.href}>
                 {l.label}
               </a>
             ))}
+            {langSwitch}
             <a href="#orcamento" className="btn btn--ghost">
-              Solicitar orçamento
+              {t.nav.cta}
             </a>
           </nav>
 
-          <button
-            className="nav__toggle"
-            aria-expanded={open}
-            aria-controls="menu-mobile"
-            aria-label={open ? "Fechar menu" : "Abrir menu"}
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span />
-            <span />
-          </button>
+          <div className="nav__mobile">
+            {langSwitch}
+            <button
+              className="nav__toggle"
+              aria-expanded={open}
+              aria-controls="menu-mobile"
+              aria-label={open ? (t.lang === "pt" ? "Fechar menu" : "Close menu") : t.lang === "pt" ? "Abrir menu" : "Open menu"}
+              onClick={() => setOpen((v) => !v)}
+            >
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
       </header>
 
       <div className="drawer" id="menu-mobile" data-open={open} aria-hidden={!open}>
-        {[...LINKS, { href: "#orcamento", label: "Solicitar orçamento" }].map((l, i) => (
+        {[...links, { href: "#orcamento", label: t.nav.cta }].map((l, i) => (
           <a
             key={l.href}
             href={l.href}

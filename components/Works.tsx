@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import Reveal from "./Reveal";
-import { PROJECTS, type Project } from "@/lib/content";
+import type { Dictionary, Project } from "@/lib/content";
 
-export default function Works() {
+export default function Works({ t }: { t: Dictionary }) {
   const [active, setActive] = useState<Project | null>(null);
 
   const close = useCallback(() => setActive(null), []);
@@ -25,8 +25,8 @@ export default function Works() {
   return (
     <>
       <div className="works">
-        {PROJECTS.map((p, i) => (
-          <Reveal key={p.slug} variant="fade" delay={(i % 2) * 0.1} className="work-wrap">
+        {t.works.items.map((p, i) => (
+          <Reveal key={p.slug} variant="fade" delay={(i % 2) * 0.1}>
             <button className="work" onClick={() => setActive(p)}>
               <div className="work__frame">
                 <Image
@@ -38,7 +38,7 @@ export default function Works() {
                 />
                 <span className="work__veil" aria-hidden="true" />
                 <span className="work__view" aria-hidden="true">
-                  Ver
+                  {t.works.view}
                 </span>
               </div>
 
@@ -61,14 +61,16 @@ export default function Works() {
         data-open={Boolean(active)}
         role="dialog"
         aria-modal={Boolean(active)}
-        aria-label={active ? `Projeto ${active.title}` : undefined}
+        aria-label={active ? `${t.works.project} ${active.title}` : undefined}
         aria-hidden={!active}
       >
         {active && (
           <>
             <div className="lb__bar">
               <div>
-                <span className="eyebrow">Projeto {active.index}</span>
+                <span className="eyebrow">
+                  {t.works.project} {active.index}
+                </span>
                 <h3 className="h3" style={{ marginTop: "0.6rem" }}>
                   {active.title}
                 </h3>
@@ -76,14 +78,13 @@ export default function Works() {
                   {active.meta} — {active.location}
                 </p>
               </div>
-              <button className="lb__close" onClick={close} aria-label="Fechar projeto">
+              <button
+                className="lb__close"
+                onClick={close}
+                aria-label={t.lang === "pt" ? "Fechar projeto" : "Close project"}
+              >
                 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-                  <path
-                    d="M1 1l14 14M15 1L1 15"
-                    stroke="currentColor"
-                    strokeWidth="1.3"
-                    fill="none"
-                  />
+                  <path d="M1 1l14 14M15 1L1 15" stroke="currentColor" strokeWidth="1.3" fill="none" />
                 </svg>
               </button>
             </div>

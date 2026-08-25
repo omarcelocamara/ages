@@ -1,12 +1,13 @@
 # AGES Creative Studio — site institucional
 
-Site de página única para a **AGES Creative Studio**, com apresentação institucional,
-serviços, processo, portfólio e formulário de solicitação de orçamento que envia as
-respostas por e-mail para `adm.agesstudio@gmail.com`.
+Site bilíngue (PT/EN) da **AGES Creative Studio**, com apresentação institucional,
+serviços, processo, portfólio e chamada para o formulário de orçamento no Google Forms.
 
 Feito em **Next.js (App Router) + TypeScript + CSS puro**. Sem framework de CSS —
 todo o sistema visual está em [`app/globals.css`](app/globals.css), baseado na paleta
 e na tipografia da marca.
+
+Publicado em https://agesstudio.com.br.
 
 ---
 
@@ -20,78 +21,80 @@ npm install
 npm run dev
 ```
 
-Acesse http://localhost:3000.
+- Português → http://localhost:3000
+- Inglês → http://localhost:3000/en
+
+Não há variáveis de ambiente: o site é totalmente estático.
 
 ---
 
-## Configurando o envio de e-mail
+## Os dois idiomas
 
-O formulário envia para o endpoint `POST /api/orcamento`, que despacha o e-mail.
-Sem credenciais configuradas o site funciona normalmente, mas o envio responde
-`503` e o formulário mostra o e-mail de contato como alternativa.
+Cada idioma é uma **rota real**, não um alternador no cliente. Isso garante URL
+própria, indexação separada pelo Google e link compartilhável para cada versão:
 
-Copie `.env.example` para `.env.local` e preencha **uma** das opções:
+| Idioma | URL | Arquivo |
+|---|---|---|
+| Português | `/` | [`app/(pt)/page.tsx`](app/(pt)/page.tsx) |
+| Inglês | `/en` | [`app/(en)/en/page.tsx`](<app/(en)/en/page.tsx>) |
 
-```bash
-cp .env.example .env.local
+Os dois grupos de rota têm **layouts raiz separados** para que cada versão declare
+o seu próprio `<html lang>` (`pt-BR` e `en`) — algo que um único layout não permite.
+As tags `hreflang` apontam uma versão para a outra automaticamente.
+
+A página em si é a mesma em ambos: [`components/Site.tsx`](components/Site.tsx)
+recebe `lang` e monta tudo a partir do dicionário.
+
+### Editando o conteúdo
+
+**Todo** o texto do site vive em [`lib/content.ts`](lib/content.ts), num dicionário
+por idioma (`CONTENT.pt` e `CONTENT.en`) que cobre serviços, etapas do processo,
+projetos do portfólio, listas de "somos a escolha certa" e os textos de interface.
+
+O tipo `Dictionary` garante que as duas versões tenham exatamente as mesmas chaves —
+se você adicionar um texto em português e esquecer o inglês, o build falha em vez de
+publicar uma versão pela metade.
+
+Para adicionar um projeto ao portfólio, inclua um item em `works.items` nos dois
+idiomas e coloque as imagens em `public/portfolio/`.
+
+---
+
+## Formulário de orçamento
+
+O site **não processa formulários**. Os botões de orçamento abrem, em nova aba, o
+Google Forms correspondente ao idioma. Os dois links ficam em `QUOTE_FORM`, no topo
+de [`lib/content.ts`](lib/content.ts):
+
+```ts
+export const QUOTE_FORM: Record<Lang, string> = {
+  pt: "https://docs.google.com/forms/d/e/1FAIpQLSet.../viewform",
+  en: "https://docs.google.com/forms/d/e/1FAIpQLSf0.../viewform",
+};
 ```
 
-### Opção A — Gmail com senha de app (mais simples)
+Para trocar de formulário, basta editar essas duas URLs. As respostas chegam pelo
+próprio Google Forms — nas notificações do formulário ou na planilha vinculada a ele.
 
-Não exige domínio próprio. Use a própria conta `adm.agesstudio@gmail.com`:
-
-1. Ative a **verificação em 2 etapas** na Conta Google.
-2. Gere uma **senha de app** em https://myaccount.google.com/apppasswords.
-3. Preencha:
-
-```
-GMAIL_USER=adm.agesstudio@gmail.com
-GMAIL_APP_PASSWORD=a-senha-de-16-caracteres
-```
-
-### Opção B — Resend (recomendado com domínio próprio)
-
-1. Crie a chave em https://resend.com/api-keys.
-2. Verifique o domínio da AGES no painel do Resend.
-3. Preencha:
-
-```
-RESEND_API_KEY=re_xxxxxxxx
-RESEND_FROM="AGES Creative Studio <site@seudominio.com.br>"
-```
-
-### Opção C — SMTP genérico
-
-Para qualquer outro provedor (Zoho, Brevo, SendGrid, servidor próprio):
-
-```
-SMTP_HOST=smtp.provedor.com
-SMTP_PORT=587
-SMTP_USER=usuario
-SMTP_PASSWORD=senha
-SMTP_FROM="AGES Creative Studio <site@seudominio.com.br>"
-```
-
-> A ordem de precedência é **Resend → SMTP/Gmail**. O destinatário pode ser trocado
-> pela variável `CONTACT_TO_EMAIL`.
-
-O e-mail sai formatado com as cores da marca, e o campo **Reply-To** é preenchido
-automaticamente quando a pessoa informa um e-mail no campo de contato — basta
-responder a mensagem para falar com ela.
+> Vale conferir nas configurações de cada formulário se a notificação por e-mail
+> para novas respostas está ligada, senão ninguém é avisado quando alguém envia.
 
 ---
 
 ## Publicando na Vercel
 
-1. Suba o repositório para o GitHub.
-2. Na Vercel, **Add New → Project** e importe o repositório.
-   O framework é detectado como Next.js — não é preciso mudar nada no build.
-3. Em **Settings → Environment Variables**, adicione as variáveis da opção
-   escolhida acima (marque *Production*, *Preview* e *Development*).
-4. **Deploy**.
+O projeto já está conectado ao repositório: cada push na `main` gera um novo deploy.
+Não há variáveis de ambiente para configurar.
 
-> Se as variáveis forem adicionadas depois do primeiro deploy, use
-> **Deployments → Redeploy** para que passem a valer.
+Para o domínio, em **Settings → Domains**, com o DNS apontado no registro.br:
+
+| TIPO | NOME | DADOS |
+|---|---|---|
+| `A` | `agesstudio.com.br` | IP indicado pela Vercel |
+| `CNAME` | `www.agesstudio.com.br` | valor indicado pela Vercel |
+
+> Atenção: a Vercel escreve `@` no campo de nome, mas o registro.br interpreta o `@`
+> como nome literal e cria um host chamado "@". Use o domínio por extenso.
 
 ---
 
@@ -99,30 +102,27 @@ responder a mensagem para falar com ela.
 
 ```
 app/
-  layout.tsx              metadados, fontes e SEO
-  page.tsx                composição da página
-  globals.css             sistema visual completo (paleta, tipografia, animações)
-  api/orcamento/route.ts  recebe o formulário e envia o e-mail
+  (pt)/layout.tsx      <html lang="pt-BR"> + metadados PT
+  (pt)/page.tsx        rota /
+  (en)/layout.tsx      <html lang="en"> + metadados EN
+  (en)/en/page.tsx     rota /en
+  globals.css          sistema visual completo (paleta, tipografia, animações)
 components/
-  Nav.tsx                 navegação fixa, seção ativa e menu mobile
-  Reveal.tsx              animações de entrada por IntersectionObserver
-  Services.tsx            acordeão dos 4 serviços
-  Works.tsx               grade do portfólio + lightbox dos projetos
-  QuoteForm.tsx           formulário de orçamento (validação + envio)
+  Site.tsx             a página inteira, parametrizada por idioma
+  Nav.tsx              navegação fixa, seção ativa, alternador PT/EN e menu mobile
+  Reveal.tsx           animações de entrada por IntersectionObserver
+  Services.tsx         acordeão dos 4 serviços
+  Works.tsx            grade do portfólio + lightbox dos projetos
+  QuoteCta.tsx         bloco que leva ao Google Forms
 lib/
-  content.ts              TODO o conteúdo do site (textos, serviços, projetos)
+  content.ts           TODO o conteúdo, nos dois idiomas
+  metadata.ts          metadados e hreflang por idioma
+  fonts.ts             MuseoModerno e Bebas Neue via next/font
 public/
-  portfolio/              imagens dos projetos
-  socias/                 fotos das sócias
-  logo/                   variações da marca
+  portfolio/           imagens dos projetos
+  socias/              fotos das sócias
+  logo/                variações da marca
 ```
-
-### Editando o conteúdo
-
-Praticamente todo o texto do site vive em [`lib/content.ts`](lib/content.ts):
-serviços, etapas do processo, projetos do portfólio, listas de "somos a escolha
-certa" e as opções do formulário. Para adicionar um projeto novo, inclua um item
-em `PROJECTS` e coloque as imagens em `public/portfolio/`.
 
 ---
 
@@ -133,8 +133,8 @@ em `PROJECTS` e coloque as imagens em `public/portfolio/`.
   o material gráfico da AGES. *Agrandir* não é uma fonte livre; se a AGES tiver a
   licença, basta adicioná-la em `public/fonts/` e trocar `--font-body`.
 - **Acessibilidade** — navegação por teclado, `Esc` fecha lightbox e menu, foco
-  visível, rótulos associados, mensagens de erro com `role="alert"` e respeito a
-  `prefers-reduced-motion`.
-- **Anti-spam** — o formulário tem um campo isca (*honeypot*) invisível; envios
-  que o preenchem são descartados em silêncio.
+  visível, `aria-current` no idioma ativo e respeito a `prefers-reduced-motion`.
 - **Imagens** — servidas pelo `next/image` (AVIF/WebP, `srcset` e lazy-load).
+- **Histórico** — o site já teve um formulário próprio com envio por e-mail
+  (Resend/SMTP/Gmail). Foi substituído pelo Google Forms; o código continua no
+  histórico do Git, caso um dia faça sentido retomar.
