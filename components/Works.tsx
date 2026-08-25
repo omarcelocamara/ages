@@ -31,7 +31,7 @@ export default function Works({ t }: { t: Dictionary }) {
               <div className="work__frame">
                 <Image
                   src={p.cover}
-                  alt={`${p.title} — ${p.meta}`}
+                  alt={`${p.title}, ${p.meta}`}
                   fill
                   sizes="(max-width: 820px) 100vw, 55vw"
                   style={{ objectFit: "cover" }}
@@ -46,7 +46,7 @@ export default function Works({ t }: { t: Dictionary }) {
                 <div>
                   <span className="work__title">{p.title}</span>
                   <p className="work__meta">
-                    {p.meta} — {p.location}
+                    {p.meta} · {p.location}
                   </p>
                 </div>
                 <span className="work__idx">{p.index}</span>
@@ -75,7 +75,7 @@ export default function Works({ t }: { t: Dictionary }) {
                   {active.title}
                 </h3>
                 <p className="muted" style={{ fontSize: "0.9rem", marginTop: "0.3rem" }}>
-                  {active.meta} — {active.location}
+                  {active.meta} · {active.location}
                 </p>
               </div>
               <button

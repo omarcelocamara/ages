@@ -12,7 +12,7 @@ export function buildMetadata(lang: Lang): Metadata {
 
   return {
     metadataBase: new URL(STUDIO.site),
-    title: { default: t.meta.title, template: `%s — ${STUDIO.name}` },
+    title: { default: t.meta.title, template: `%s | ${STUDIO.name}` },
     description: t.meta.description,
     keywords: t.meta.keywords,
     authors: [{ name: STUDIO.name }],

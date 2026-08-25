@@ -144,10 +144,10 @@ const pt: Dictionary = {
   lang: "pt",
   htmlLang: "pt-BR",
   label: "Português",
-  city: "Porto Alegre — RS, Brasil",
+  city: "Porto Alegre, RS, Brasil",
 
   meta: {
-    title: "AGES Creative Studio — Arquitetura, representação visual e suporte de projeto",
+    title: "AGES Creative Studio | Arquitetura, representação visual e suporte de projeto",
     description:
       "Estúdio criativo especializado em arquitetura. Renderização, projeto 3D, diagramação de pranchas e detalhamento técnico para arquitetos, escritórios e estudantes.",
     keywords: [
@@ -171,7 +171,7 @@ const pt: Dictionary = {
   },
 
   hero: {
-    eyebrow: "Estúdio criativo de arquitetura — Porto Alegre — RS, Brasil",
+    eyebrow: "Estúdio criativo de arquitetura, Porto Alegre, RS",
     line1: "Ideias que",
     line2: "se tornam ",
     line2Accent: "projeto.",
@@ -201,11 +201,11 @@ const pt: Dictionary = {
     title: "Mais do que um serviço, um estúdio.",
     p1Strong: "A AGES Creative Studio",
     p1: " é um estúdio de arquitetura e design dedicado a transformar ideias em espaços bem resolvidos, funcionais e visualmente marcantes.",
-    p2: "Damos vida às suas ideias — seja na renderização de imagens, criação de vídeo, diagramação de pranchas ou detalhamento de mobiliários. Comunicamo-nos com clareza e profissionalismo para entregar imagens que vendem projetos, conectando estética e estratégia visual para arquitetos e escritórios.",
+    p2: "Damos vida às suas ideias. Seja na renderização de imagens, criação de vídeo, diagramação de pranchas ou detalhamento de mobiliários. Comunicamo-nos com clareza e profissionalismo para entregar imagens que vendem projetos, conectando estética e estratégia visual para arquitetos e escritórios.",
     p3StrongA: "processos colaborativos",
     p3StrongB: "comunicação transparente",
     p3: "e um olhar cuidadoso em cada etapa, garantindo uma experiência fluida e resultados bem executados.",
-    caption: "Amanda, Eduarda e Eduarda — as sócias por trás de cada entrega.",
+    caption: "Amanda, Eduarda B e Eduarda S. As sócias por trás de cada entrega.",
     stats: [
       { n: "04", l: "frentes de serviço, do conceito à execução" },
       { n: "06", l: "etapas de processo transparente em interiores" },
@@ -217,14 +217,14 @@ const pt: Dictionary = {
     eyebrow: "Nossa crença",
     quote: "Design não se trata apenas de criar imagens, mas de ",
     quoteAccent: "gerar clareza.",
-    body: "Quando as ideias são claramente definidas, comunicadas e sustentadas, melhores decisões são tomadas — e melhores projetos são construídos.",
+    body: "Quando as ideias são claramente definidas, comunicadas e sustentadas, melhores decisões são tomadas e melhores projetos são construídos.",
   },
 
   services: {
     eyebrow: "O nosso serviço",
     title: "Suporte em design para todas as etapas.",
     intro:
-      "Oferecemos suporte modular e colaborativo, adaptável às diferentes etapas do projeto e localizações. Um apoio confiável e de alta qualidade — do conceito até a produção.",
+      "Oferecemos suporte modular e colaborativo, adaptável às diferentes etapas do projeto e localizações. Um apoio confiável e de alta qualidade: do conceito até a produção.",
     does: "O que fazemos",
     idealFor: "Ideal para",
     items: [
@@ -311,7 +311,7 @@ const pt: Dictionary = {
     eyebrow: "Arquitetura de interiores",
     title: "Como trabalhamos, etapa por etapa.",
     intro:
-      "Nosso processo é pensado para trazer clareza, segurança e tranquilidade. Na AGES, o cliente sabe exatamente onde está, o que está sendo desenvolvido e para onde o projeto está indo — do primeiro encontro à entrega final.",
+      "Nosso processo é pensado para trazer clareza, segurança e tranquilidade. Na AGES, o cliente sabe exatamente onde está, o que está sendo desenvolvido e para onde o projeto está indo, do primeiro encontro à entrega final.",
     steps: [
       {
         n: "01",
@@ -334,7 +334,7 @@ const pt: Dictionary = {
       {
         n: "04",
         title: "Projeto 3D e visualização",
-        body: "Transformamos o conceito aprovado em modelos tridimensionais e imagens realistas — materiais, cores, iluminação e volumes antes da execução.",
+        body: "Transformamos o conceito aprovado em modelos tridimensionais e imagens realistas: materiais, cores, iluminação e volumes antes da execução.",
         items: ["Modelagem 3D", "Renderizações", "Ajustes conforme feedback", "Aprovação do conceito final"],
       },
       {
@@ -367,7 +367,7 @@ const pt: Dictionary = {
         meta: "Apartamento 35 m²",
         location: "São Paulo, Brasil",
         scope: ["Projeto autoral", "Conceito ao executivo", "Modelagem 3D", "Renderização"],
-        body: "Projeto autoral da AGES: um apartamento compacto pensado para unir funcionalidade, conforto e personalidade em cada detalhe. Desenvolvemos todas as etapas — do conceito ao anteprojeto, projeto executivo, detalhamentos, modelagem 3D e renderização. De estilo contemporâneo e maximalista, explora contrastes: a área social em tons suaves de azul e madeira clara, o quarto com cores marcantes e formas expressivas, e o banheiro em verde e branco, atemporal.",
+        body: "Projeto autoral da AGES: um apartamento compacto pensado para unir funcionalidade, conforto e personalidade em cada detalhe. Desenvolvemos todas as etapas: do conceito ao anteprojeto, projeto executivo, detalhamentos, modelagem 3D e renderização. De estilo contemporâneo e maximalista, explora contrastes: a área social em tons suaves de azul e madeira clara, o quarto com cores marcantes e formas expressivas, e o banheiro em verde e branco, atemporal.",
         cover: "/portfolio/apt2507-quarto-01.jpg",
         images: APT_IMAGES([
           "Marcenaria integrada da sala e cozinha do Apt 2507",
@@ -391,7 +391,7 @@ const pt: Dictionary = {
         meta: "Cabana",
         location: "Nova Petrópolis, Brasil",
         scope: ["Concepção de ambiente", "Modelagem 3D", "Detalhamento de marcenaria", "Imagens"],
-        body: "Neste projeto, exploramos os detalhes como forma de comunicar a funcionalidade, a materialidade e a experiência proposta para cada ambiente. Na cozinha da Cabana 6, o foco esteve no desenho dos móveis sob medida, pensados para unir estética, praticidade e aproveitamento inteligente do espaço — traduzindo com precisão cada escolha de projeto e sua relação com o uso cotidiano.",
+        body: "Neste projeto, exploramos os detalhes como forma de comunicar a funcionalidade, a materialidade e a experiência proposta para cada ambiente. Na cozinha da Cabana 6, o foco esteve no desenho dos móveis sob medida, pensados para unir estética, praticidade e aproveitamento inteligente do espaço, traduzindo com precisão cada escolha de projeto e sua relação com o uso cotidiano.",
         cover: "/portfolio/cabana06-01.jpg",
         images: CABANA_IMAGES([
           "Cozinha da Cabana 06 com mesa de madeira e pendentes de fibra",
@@ -403,7 +403,7 @@ const pt: Dictionary = {
         slug: "tramontina-kitchen",
         index: "03",
         title: "Tramontina Kitchen",
-        meta: "Apartamento 36 m² — projeto conceitual",
+        meta: "Apartamento 36 m², projeto conceitual",
         location: "Projeto conceitual",
         scope: ["Conceito", "Especificação técnica", "Modelagem 3D", "Renderização"],
         body: "Um projeto conceitual de cozinha integrada em apartamento compacto, desenvolvido com especificação completa de equipamentos e marcenaria. A ilha central organiza o preparo e a convivência, enquanto a paleta clara em madeira e tons neutros amplia visualmente a metragem e conecta a cozinha ao estar.",
@@ -421,7 +421,7 @@ const pt: Dictionary = {
         meta: "Cabana 86,50 m²",
         location: "Nova Petrópolis, Brasil",
         scope: ["Concepção arquitetônica", "Plantas e fachadas", "Especificação de materiais", "Renderização"],
-        body: "Cabanas concebidas para se implantar com leveza no relevo, elevadas do solo por embasamento em pedra grês. O volume inclinado em ripado de bambu e madeira plástica reciclada abriga dois pavimentos com esquadrias de vidro duplo, lareira dupla face e estrutura em CLT e madeira laminada colada — uma resposta contemporânea ao clima e à paisagem serrana.",
+        body: "Cabanas concebidas para se implantar com leveza no relevo, elevadas do solo por embasamento em pedra grês. O volume inclinado em ripado de bambu e madeira plástica reciclada abriga dois pavimentos com esquadrias de vidro duplo, lareira dupla face e estrutura em CLT e madeira laminada colada. Uma resposta contemporânea ao clima e à paisagem serrana.",
         cover: "/portfolio/ebb-hero.jpg",
         images: EBB_IMAGES([
           "Implantação das cabanas EBB no campo aberto",
@@ -482,13 +482,13 @@ const pt: Dictionary = {
   cta: {
     eyebrow: "Solicitação de orçamento",
     title: "Pronto para iniciar um novo projeto?",
-    body: "Preencha nosso formulário de orçamento. Ele nos ajuda a entender suas necessidades, prazos e como podemos apoiar você da melhor forma — para enviarmos uma proposta personalizada, pensada exatamente para o seu projeto.",
+    body: "Preencha nosso formulário de orçamento. Ele nos ajuda a entender suas necessidades, prazos e como podemos apoiar você da melhor forma, para enviarmos uma proposta personalizada, pensada exatamente para o seu projeto.",
     button: "Preencher formulário",
     note: "O formulário abre em uma nova aba. Leva cerca de 3 minutos.",
     steps: [
       "Conte quem você é e como prefere ser contatado",
       "Selecione os serviços que fazem sentido para o seu projeto",
-      "Descreva o projeto — e aguarde nosso retorno por e-mail",
+      "Descreva o projeto e aguarde nosso retorno por e-mail",
     ],
     directLabel: "Prefere falar direto?",
   },
@@ -510,10 +510,10 @@ const en: Dictionary = {
   lang: "en",
   htmlLang: "en",
   label: "English",
-  city: "Porto Alegre — RS, Brazil",
+  city: "Porto Alegre, RS, Brazil",
 
   meta: {
-    title: "AGES Creative Studio — Architecture, visual representation and project support",
+    title: "AGES Creative Studio | Architecture, visual representation and project support",
     description:
       "Creative studio specialised in architecture. Rendering, 3D modelling, presentation board layout and technical detailing for architects, studios and students.",
     keywords: [
@@ -537,7 +537,7 @@ const en: Dictionary = {
   },
 
   hero: {
-    eyebrow: "Architecture creative studio — Porto Alegre — RS, Brazil",
+    eyebrow: "Architecture creative studio, Porto Alegre, RS",
     line1: "Ideas that",
     line2: "become ",
     line2Accent: "design.",
@@ -567,11 +567,11 @@ const en: Dictionary = {
     title: "More than a service, a studio.",
     p1Strong: "AGES Creative Studio",
     p1: " is an architecture and design studio devoted to turning ideas into spaces that are well resolved, functional and visually striking.",
-    p2: "We bring your ideas to life — through image rendering, video, presentation board layout or furniture detailing. We communicate with clarity and professionalism to deliver images that sell projects, connecting aesthetics and visual strategy for architects and studios.",
+    p2: "We bring your ideas to life. Through image rendering, video, presentation board layout or furniture detailing. We communicate with clarity and professionalism to deliver images that sell projects, connecting aesthetics and visual strategy for architects and studios.",
     p3StrongA: "collaborative processes",
     p3StrongB: "transparent communication",
     p3: "and a careful eye at every stage, ensuring a smooth experience and well-executed results.",
-    caption: "Amanda, Eduarda and Eduarda — the partners behind every delivery.",
+    caption: "Amanda, Eduarda B and Eduarda S. The partners behind every delivery.",
     stats: [
       { n: "04", l: "service areas, from concept to execution" },
       { n: "06", l: "transparent process stages in interiors" },
@@ -583,14 +583,14 @@ const en: Dictionary = {
     eyebrow: "What we believe",
     quote: "Design is not only about creating images, but about ",
     quoteAccent: "creating clarity.",
-    body: "When ideas are clearly defined, communicated and supported, better decisions are made — and better projects get built.",
+    body: "When ideas are clearly defined, communicated and supported, better decisions are made and better projects get built.",
   },
 
   services: {
     eyebrow: "What we offer",
     title: "Design support for every stage.",
     intro:
-      "We offer modular, collaborative support that adapts to different project stages and locations. Reliable, high-quality help — from concept through to production.",
+      "We offer modular, collaborative support that adapts to different project stages and locations. Reliable, high-quality help: from concept through to production.",
     does: "What we do",
     idealFor: "Ideal for",
     items: [
@@ -677,7 +677,7 @@ const en: Dictionary = {
     eyebrow: "Interior architecture",
     title: "How we work, stage by stage.",
     intro:
-      "Our process is designed to bring clarity, confidence and peace of mind. At AGES, the client knows exactly where things stand, what is being developed and where the project is heading — from the first meeting to final delivery.",
+      "Our process is designed to bring clarity, confidence and peace of mind. At AGES, the client knows exactly where things stand, what is being developed and where the project is heading, from the first meeting to final delivery.",
     steps: [
       {
         n: "01",
@@ -700,7 +700,7 @@ const en: Dictionary = {
       {
         n: "04",
         title: "3D design and visualisation",
-        body: "We turn the approved concept into three-dimensional models and realistic images — materials, colours, lighting and volumes before anything is built.",
+        body: "We turn the approved concept into three-dimensional models and realistic images: materials, colours, lighting and volumes before anything is built.",
         items: ["3D modelling", "Renders", "Adjustments from feedback", "Final concept approval"],
       },
       {
@@ -733,7 +733,7 @@ const en: Dictionary = {
         meta: "35 m² apartment",
         location: "São Paulo, Brazil",
         scope: ["In-house project", "Concept to construction", "3D modelling", "Rendering"],
-        body: "An AGES in-house project: a compact apartment designed to combine functionality, comfort and personality in every detail. We developed every stage — from concept to schematic design, construction documentation, detailing, 3D modelling and rendering. Contemporary and maximalist in style, it plays with contrast: the living area in soft blues and pale wood, the bedroom in bold colour and expressive forms, and the bathroom in timeless green and white.",
+        body: "An AGES in-house project: a compact apartment designed to combine functionality, comfort and personality in every detail. We developed every stage: from concept to schematic design, construction documentation, detailing, 3D modelling and rendering. Contemporary and maximalist in style, it plays with contrast: the living area in soft blues and pale wood, the bedroom in bold colour and expressive forms, and the bathroom in timeless green and white.",
         cover: "/portfolio/apt2507-quarto-01.jpg",
         images: APT_IMAGES([
           "Built-in joinery of the living room and kitchen at Apt 2507",
@@ -757,7 +757,7 @@ const en: Dictionary = {
         meta: "Cabin",
         location: "Nova Petrópolis, Brazil",
         scope: ["Space design", "3D modelling", "Joinery detailing", "Images"],
-        body: "In this project we explored detail as a way of communicating the functionality, materiality and experience proposed for each space. In the Cabin 6 kitchen, the focus was the design of bespoke furniture, conceived to combine aesthetics, practicality and smart use of space — translating each design decision and its relationship to everyday use with precision.",
+        body: "In this project we explored detail as a way of communicating the functionality, materiality and experience proposed for each space. In the Cabin 6 kitchen, the focus was the design of bespoke furniture, conceived to combine aesthetics, practicality and smart use of space, translating each design decision and its relationship to everyday use with precision.",
         cover: "/portfolio/cabana06-01.jpg",
         images: CABANA_IMAGES([
           "Cabin 06 kitchen with wooden table and fibre pendant lights",
@@ -769,7 +769,7 @@ const en: Dictionary = {
         slug: "tramontina-kitchen",
         index: "03",
         title: "Tramontina Kitchen",
-        meta: "36 m² apartment — concept project",
+        meta: "36 m² apartment, concept project",
         location: "Concept project",
         scope: ["Concept", "Technical specification", "3D modelling", "Rendering"],
         body: "A concept project for an open-plan kitchen in a compact apartment, developed with full specification of appliances and joinery. The central island organises both cooking and gathering, while the light palette of wood and neutral tones visually expands the floor area and connects the kitchen to the living space.",
@@ -787,7 +787,7 @@ const en: Dictionary = {
         meta: "86.50 m² cabin",
         location: "Nova Petrópolis, Brazil",
         scope: ["Architectural design", "Plans and elevations", "Material specification", "Rendering"],
-        body: "Cabins conceived to sit lightly on the terrain, raised off the ground on a sandstone base. The angled volume, clad in bamboo and recycled composite battens, houses two floors with double-glazed frames, a double-sided fireplace and a structure in CLT and glulam — a contemporary response to the climate and the mountain landscape.",
+        body: "Cabins conceived to sit lightly on the terrain, raised off the ground on a sandstone base. The angled volume, clad in bamboo and recycled composite battens, houses two floors with double-glazed frames, a double-sided fireplace and a structure in CLT and glulam. A contemporary response to the climate and the mountain landscape.",
         cover: "/portfolio/ebb-hero.jpg",
         images: EBB_IMAGES([
           "The EBB cabins sited in open countryside",
@@ -848,13 +848,13 @@ const en: Dictionary = {
   cta: {
     eyebrow: "Request a quote",
     title: "Ready to start a new project?",
-    body: "Fill in our quote form. It helps us understand your needs, your timeline and how we can best support you — so we can send a tailored proposal, built specifically around your project.",
+    body: "Fill in our quote form. It helps us understand your needs, your timeline and how we can best support you, so we can send a tailored proposal, built specifically around your project.",
     button: "Open the form",
     note: "The form opens in a new tab. It takes about 3 minutes.",
     steps: [
       "Tell us who you are and how you prefer to be contacted",
       "Select the services that fit your project",
-      "Describe the project — and wait for our reply by email",
+      "Describe the project and wait for our reply by email",
     ],
     directLabel: "Prefer to talk directly?",
   },
