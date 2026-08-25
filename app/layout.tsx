@@ -21,7 +21,7 @@ const description =
   "Estúdio criativo especializado em arquitetura. Renderização, projeto 3D, diagramação de pranchas e detalhamento técnico para arquitetos, escritórios e estudantes.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://agescreativestudio.com.br"),
+  metadataBase: new URL("https://agesstudio.com.br"),
   title: {
     default: `${STUDIO.name} — Arquitetura, representação visual e suporte de projeto`,
     template: `%s — ${STUDIO.name}`,
