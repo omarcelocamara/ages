@@ -66,16 +66,16 @@ export type Dictionary = {
   };
   marquee: string[];
   about: {
-    eyebrow: string;
     title: string;
-    p1: string;
     p1Strong: string;
+    p1: string;
     p2: string;
     p3: string;
-    p3StrongA: string;
-    p3StrongB: string;
+    p4Lead: string;
+    p4StrongA: string;
+    p4Mid: string;
+    p4StrongB: string;
     caption: string;
-    stats: { n: string; l: string }[];
   };
   manifesto: { eyebrow: string; quote: string; quoteAccent: string; body: string };
   services: { eyebrow: string; title: string; intro: string; does: string; idealFor: string; items: Service[] };
@@ -195,20 +195,16 @@ const pt: Dictionary = {
   ],
 
   about: {
-    eyebrow: "Olá.",
-    title: "Mais do que um serviço, um estúdio.",
-    p1Strong: "A AGES Creative Studio",
-    p1: " é um estúdio de arquitetura e design dedicado a transformar ideias em espaços bem resolvidos, funcionais e visualmente marcantes.",
-    p2: "Damos vida às suas ideias. Seja na renderização de imagens, criação de vídeo, diagramação de pranchas ou detalhamento de mobiliários. Comunicamo-nos com clareza e profissionalismo para entregar imagens que vendem projetos, conectando estética e estratégia visual para arquitetos e escritórios.",
-    p3StrongA: "processos colaborativos",
-    p3StrongB: "comunicação transparente",
-    p3: "e um olhar cuidadoso em cada etapa, garantindo uma experiência fluida e resultados bem executados.",
-    caption: "Amanda, Eduarda B e Eduarda S. As sócias por trás de cada entrega.",
-    stats: [
-      { n: "04", l: "frentes de serviço, do conceito à execução" },
-      { n: "06", l: "etapas de processo transparente em interiores" },
-      { n: "03", l: "sócias arquitetas à frente de cada projeto" },
-    ],
+    title: "Olá.",
+    p1Strong: "A AGES Creative Studio é um estúdio de arquitetura e design",
+    p1: " dedicado a transformar ideias em espaços bem resolvidos, funcionais e visualmente marcantes.",
+    p2: "Desenvolvemos projetos com soluções que unem estética, estratégia e atenção aos detalhes, sempre buscando criar ambientes autênticos e alinhados à identidade e às necessidades de cada cliente.",
+    p3: "Nossa missão é conduzir cada projeto com clareza, sensibilidade e organização, acreditando que um bom design vai além da aparência: ele precisa comunicar, acolher e funcionar de forma inteligente.",
+    p4Lead: "Valorizamos ",
+    p4StrongA: "processos colaborativos, comunicação transparente",
+    p4Mid: " e um olhar cuidadoso em cada etapa, garantindo uma experiência fluida e ",
+    p4StrongB: "resultados bem executados.",
+    caption: "Amanda, Eduarda B e Eduarda S, as sócias da AGES Creative Studio.",
   },
 
   manifesto: {
@@ -560,20 +556,16 @@ const en: Dictionary = {
   ],
 
   about: {
-    eyebrow: "Hello.",
-    title: "More than a service, a studio.",
-    p1Strong: "AGES Creative Studio",
-    p1: " is an architecture and design studio devoted to turning ideas into spaces that are well resolved, functional and visually striking.",
-    p2: "We bring your ideas to life. Through image rendering, video, presentation board layout or furniture detailing. We communicate with clarity and professionalism to deliver images that sell projects, connecting aesthetics and visual strategy for architects and studios.",
-    p3StrongA: "collaborative processes",
-    p3StrongB: "transparent communication",
-    p3: "and a careful eye at every stage, ensuring a smooth experience and well-executed results.",
-    caption: "Amanda, Eduarda B and Eduarda S. The partners behind every delivery.",
-    stats: [
-      { n: "04", l: "service areas, from concept to execution" },
-      { n: "06", l: "transparent process stages in interiors" },
-      { n: "03", l: "partner architects leading every project" },
-    ],
+    title: "Hi.",
+    p1Strong: "AGES Creative Studio is an architecture and design studio",
+    p1: " dedicated to transforming ideas into well-resolved, functional, and visually striking spaces.",
+    p2: "We develop projects with solutions that combine aesthetics, strategy, and attention to detail, always aiming to create authentic environments aligned with each client's identity and needs.",
+    p3: "Our mission is to guide each project with clarity, sensitivity, and organization, believing that good design goes beyond appearance: it must communicate, welcome, and function intelligently.",
+    p4Lead: "We value ",
+    p4StrongA: "collaborative processes, transparent communication",
+    p4Mid: ", and a careful eye at every stage, ensuring a smooth experience and ",
+    p4StrongB: "well-executed results.",
+    caption: "Amanda, Eduarda B and Eduarda S, the partners of AGES Creative Studio.",
   },
 
   manifesto: {

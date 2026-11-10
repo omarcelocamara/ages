@@ -83,65 +83,49 @@ export default function Site({ lang }: { lang: Lang }) {
         </div>
 
         {/* ═══ Estúdio ════════════════════════════════════════════════ */}
-        <section className="section surface-cream" id="estudio">
-          <div className="shell">
-            <div className="about">
-              <div>
-                <Reveal>
-                  <span className="eyebrow">{t.about.eyebrow}</span>
-                </Reveal>
+        <section className="about-hi surface-cream" id="estudio">
+          <div className="about-hi__text">
+            <Reveal>
+              <h2 className="about-hi__title">{t.about.title}</h2>
+            </Reveal>
 
-                <Reveal delay={0.08}>
-                  <h2 className="h2" style={{ margin: "1.5rem 0 2rem", maxWidth: "16ch" }}>
-                    {t.about.title}
-                  </h2>
-                </Reveal>
-
-                <div className="about__copy">
-                  <Reveal delay={0.14}>
-                    <p className="lead">
-                      <strong>{t.about.p1Strong}</strong>
-                      {t.about.p1}
-                    </p>
-                  </Reveal>
-                  <Reveal delay={0.2}>
-                    <p className="muted">{t.about.p2}</p>
-                  </Reveal>
-                  <Reveal delay={0.26}>
-                    <p className="muted">
-                      {lang === "pt" ? "Valorizamos " : "We value "}
-                      <strong>{t.about.p3StrongA}</strong>,{" "}
-                      <strong>{t.about.p3StrongB}</strong> {t.about.p3}
-                    </p>
-                  </Reveal>
-                </div>
-
-                <div className="stats">
-                  {t.about.stats.map((s, i) => (
-                    <Reveal key={s.n} delay={0.1 + i * 0.08}>
-                      <div className="stat">
-                        <div className="stat__n">{s.n}</div>
-                        <p className="stat__l">{s.l}</p>
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
-              </div>
-
-              <Reveal variant="mask" delay={0.18}>
-                <figure className="about__figure">
-                  <Image
-                    src="/socias/socias-branco-01.jpg"
-                    alt={t.about.caption}
-                    width={853}
-                    height={1280}
-                    sizes="(max-width: 950px) 100vw, 40vw"
-                  />
-                  <figcaption>{t.about.caption}</figcaption>
-                </figure>
+            <div className="about-hi__copy">
+              <Reveal delay={0.1}>
+                <p>
+                  <strong>{t.about.p1Strong}</strong>
+                  {t.about.p1}
+                </p>
+                <p>{t.about.p2}</p>
+                <p>{t.about.p3}</p>
+                <p>
+                  {t.about.p4Lead}
+                  <strong>{t.about.p4StrongA}</strong>
+                  {t.about.p4Mid}
+                  <strong>{t.about.p4StrongB}</strong>
+                </p>
               </Reveal>
             </div>
+
+            <Reveal delay={0.2}>
+              <div className="about-hi__contact">
+                <a href={STUDIO.instagramUrl} target="_blank" rel="noopener noreferrer">
+                  @{STUDIO.instagram}
+                </a>
+                <a href={`mailto:${STUDIO.email}`}>{STUDIO.email}</a>
+              </div>
+            </Reveal>
           </div>
+
+          <Reveal variant="mask" delay={0.15} className="about-hi__media">
+            <figure className="about-hi__figure">
+              <Image
+                src="/socias/socias-sofa.jpg"
+                alt={t.about.caption}
+                fill
+                sizes="(max-width: 950px) 100vw, 45vw"
+              />
+            </figure>
+          </Reveal>
         </section>
 
         {/* ═══ Manifesto ══════════════════════════════════════════════ */}
