@@ -853,6 +853,21 @@ h4 {
   object-position: center 30%;
 }
 
+/* ═══ Serviço ═══════════════════════════════════════════════════════ */
+.services-text {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  max-width: 1120px;
+}
+
+.services-text__body {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 1rem + 2.4vw, 3.1rem);
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+}
+
 /* ═══ Citação / manifesto ════════════════════════════════════════════ */
 .quote {
   position: relative;
@@ -1403,39 +1418,65 @@ h4 {
 .names {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(1rem, 3vw, 2.75rem);
+  justify-content: center;
+  gap: clamp(0.75rem, 2.5vw, 1.5rem);
   margin-top: clamp(2rem, 4vw, 3rem);
   padding-top: clamp(1.5rem, 3vw, 2.25rem);
   border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
 }
 
-.names span {
+.names__link,
+.names__plain {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(1.15rem, 0.95rem + 1vw, 1.9rem);
-  letter-spacing: -0.025em;
+  font-size: clamp(1.05rem, 0.95rem + 0.7vw, 1.6rem);
+  letter-spacing: -0.02em;
+  border: 1px solid transparent;
+}
+
+.names__link {
+  border-color: color-mix(in srgb, currentColor 35%, transparent);
+  transition: background 0.35s var(--ease-soft), color 0.35s var(--ease-soft), border-color 0.35s var(--ease-soft);
+}
+
+.names__link:hover,
+.names__link:focus-visible {
+  background: var(--cream);
+  border-color: var(--cream);
+  color: var(--burgundy);
+}
+
+.names__arrow {
+  font-size: 0.75em;
+  transition: transform 0.35s var(--ease);
+}
+
+.names__link:hover .names__arrow {
+  transform: translate(2px, -2px);
 }
 
 /* ═══ Fit ════════════════════════════════════════════════════════════ */
 .fit {
   display: grid;
-  gap: clamp(2rem, 5vw, 4rem);
+  gap: clamp(2rem, 5vw, 3.5rem);
+  max-width: 980px;
 }
 
 @media (min-width: 880px) {
   .fit {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+    max-width: none;
   }
 }
 
-.fit__col > h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(1.2rem, 1rem + 0.85vw, 1.65rem);
-  letter-spacing: -0.022em;
-  margin-bottom: 1.75rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+.fit__title {
+  max-width: 12ch;
 }
 
 .fit__list {
@@ -1450,7 +1491,7 @@ h4 {
   grid-template-columns: 22px 1fr;
   gap: 0.95rem;
   align-items: start;
-  font-size: 0.96rem;
+  font-size: clamp(1rem, 0.94rem + 0.3vw, 1.15rem);
   line-height: 1.5;
   color: color-mix(in srgb, currentColor 82%, transparent);
 }

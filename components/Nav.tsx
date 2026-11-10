@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { PATHS, type Dictionary } from "@/lib/content";
+import { PATHS, QUOTE_FORM, type Dictionary } from "@/lib/content";
 
 export default function Nav({ t }: { t: Dictionary }) {
   const [stuck, setStuck] = useState(false);
@@ -97,7 +97,7 @@ export default function Nav({ t }: { t: Dictionary }) {
               </a>
             ))}
             {langSwitch}
-            <a href="#orcamento" className="btn btn--ghost">
+            <a href={QUOTE_FORM[t.lang]} target="_blank" rel="noopener noreferrer" className="btn btn--ghost">
               {t.nav.cta}
             </a>
           </nav>
@@ -119,10 +119,11 @@ export default function Nav({ t }: { t: Dictionary }) {
       </header>
 
       <div className="drawer" id="menu-mobile" data-open={open} aria-hidden={!open}>
-        {[...links, { href: "#orcamento", label: t.nav.cta }].map((l, i) => (
+        {[...links, { href: QUOTE_FORM[t.lang], label: t.nav.cta, external: true }].map((l, i) => (
           <a
             key={l.href}
             href={l.href}
+            {...("external" in l ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             onClick={() => setOpen(false)}
             style={{ "--i": i } as React.CSSProperties}
             tabIndex={open ? 0 : -1}

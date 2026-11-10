@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Nav from "./Nav";
 import Reveal from "./Reveal";
-import Services from "./Services";
 import Works from "./Works";
-import QuoteCta from "./QuoteCta";
 import { CONTENT, PARTNERS, QUOTE_FORM, STUDIO, type Lang } from "@/lib/content";
 
 export default function Site({ lang }: { lang: Lang }) {
@@ -128,51 +126,17 @@ export default function Site({ lang }: { lang: Lang }) {
           </Reveal>
         </section>
 
-        {/* ═══ Manifesto ══════════════════════════════════════════════ */}
-        <section className="section surface-dark grain">
+        {/* ═══ Serviços ═══════════════════════════════════════════════ */}
+        <section className="section surface-dark grain" id="servicos">
           <div className="shell">
-            <div className="quote">
+            <div className="services-text">
               <Reveal>
-                <span className="eyebrow">{t.manifesto.eyebrow}</span>
+                <span className="eyebrow">{t.services.eyebrow}</span>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className="quote__text">
-                  {t.manifesto.quote}
-                  <em>{t.manifesto.quoteAccent}</em>
-                </p>
-              </Reveal>
-              <Reveal delay={0.2}>
-                <p className="muted" style={{ maxWidth: "44ch", color: "inherit", opacity: 0.7 }}>
-                  {t.manifesto.body}
-                </p>
-              </Reveal>
-              <Reveal delay={0.28}>
-                <span className="quote__sig">{STUDIO.name}</span>
+                <p className="services-text__body">{t.services.text}</p>
               </Reveal>
             </div>
-          </div>
-        </section>
-
-        {/* ═══ Serviços ═══════════════════════════════════════════════ */}
-        <section className="section surface-cream" id="servicos">
-          <div className="shell">
-            <div className="section-head section-head--split">
-              <div>
-                <Reveal>
-                  <span className="eyebrow">{t.services.eyebrow}</span>
-                </Reveal>
-                <Reveal delay={0.08}>
-                  <h2 className="h2" style={{ marginTop: "1.4rem", maxWidth: "13ch" }}>
-                    {t.services.title}
-                  </h2>
-                </Reveal>
-              </div>
-              <Reveal delay={0.16}>
-                <p className="lead muted">{t.services.intro}</p>
-              </Reveal>
-            </div>
-
-            <Services t={t} />
           </div>
         </section>
 
@@ -280,86 +244,61 @@ export default function Site({ lang }: { lang: Lang }) {
 
             <Reveal delay={0.15}>
               <div className="names">
-                {PARTNERS.map((p) => (
-                  <span key={p}>{p}</span>
-                ))}
+                {PARTNERS.map((p) =>
+                  p.linkedin ? (
+                    <a
+                      key={p.name}
+                      className="names__link"
+                      href={p.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`LinkedIn: ${p.name}`}
+                    >
+                      {p.name}
+                      <span className="names__arrow" aria-hidden="true">
+                        ↗
+                      </span>
+                    </a>
+                  ) : (
+                    <span key={p.name} className="names__plain">
+                      {p.name}
+                    </span>
+                  ),
+                )}
               </div>
             </Reveal>
           </div>
         </section>
 
-        {/* ═══ Somos a escolha certa? ═════════════════════════════════ */}
+        {/* ═══ Somos a escolha certa ══════════════════════════════════ */}
         <section className="section surface-cream">
           <div className="shell">
-            <div className="section-head">
-              <Reveal>
-                <span className="eyebrow">{t.fit.eyebrow}</span>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <h2 className="h2" style={{ maxWidth: "12ch" }}>
-                  {t.fit.title}
-                  <span className="serif-accent">{t.fit.titleAccent}</span>
-                </h2>
-              </Reveal>
-            </div>
-
             <div className="fit">
               <Reveal>
-                <div className="fit__col">
-                  <h3>{t.fit.yesTitle}</h3>
-                  <ul className="fit__list">
-                    {t.fit.yes.map((f) => (
-                      <li key={f}>
-                        <span className="fit__mark" aria-hidden="true">
-                          <svg viewBox="0 0 12 12">
-                            <path
-                              d="M2.5 6.3l2.4 2.4L9.6 3.9"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="1.3"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </span>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <h2 className="h2 fit__title">{t.fit.title}</h2>
               </Reveal>
-
-              <Reveal delay={0.12}>
-                <div className="fit__col">
-                  <h3>{t.fit.noTitle}</h3>
-                  <ul className="fit__list">
-                    {t.fit.no.map((f) => (
-                      <li key={f}>
-                        <span className="fit__mark" aria-hidden="true">
-                          <svg viewBox="0 0 12 12">
-                            <path
-                              d="M3.5 3.5l5 5M8.5 3.5l-5 5"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="1.3"
-                              strokeLinecap="round"
-                            />
-                          </svg>
-                        </span>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <Reveal delay={0.1}>
+                <ul className="fit__list">
+                  {t.fit.items.map((f) => (
+                    <li key={f}>
+                      <span className="fit__mark" aria-hidden="true">
+                        <svg viewBox="0 0 12 12">
+                          <path
+                            d="M2.5 6.3l2.4 2.4L9.6 3.9"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
               </Reveal>
             </div>
-          </div>
-        </section>
-
-        {/* ═══ Orçamento ══════════════════════════════════════════════ */}
-        <section className="section surface-dark grain" id="orcamento">
-          <div className="shell">
-            <QuoteCta t={t} />
           </div>
         </section>
       </main>

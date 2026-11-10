@@ -19,17 +19,12 @@ export const QUOTE_FORM: Record<Lang, string> = {
   en: "https://docs.google.com/forms/d/e/1FAIpQLSf0jb8tEqJvzuaa5LOuEdJGiyA6zW5f3TgvtOEhitaSmmEfWQ/viewform",
 };
 
-export const PARTNERS = ["Amanda Guerses", "Eduarda Saldanha", "Eduarda Baptista"];
-
-export type Service = {
-  id: string;
-  index: string;
-  title: string;
-  lead: string;
-  body: string;
-  does: string[];
-  idealFor: string[];
-};
+/** Sócias, na ordem em que aparecem. Sem `linkedin`, o nome aparece sem link. */
+export const PARTNERS: { name: string; linkedin?: string }[] = [
+  { name: "Amanda Guerses", linkedin: "https://www.linkedin.com/in/amandaguerses/" },
+  { name: "Eduarda Saldanha", linkedin: "https://www.linkedin.com/in/eduardaseverosaldanha/" },
+  { name: "Eduarda Baptista" },
+];
 
 export type ProjectImage = { src: string; alt: string; wide?: boolean };
 
@@ -77,63 +72,41 @@ export type Dictionary = {
     p4StrongB: string;
     caption: string;
   };
-  manifesto: { eyebrow: string; quote: string; quoteAccent: string; body: string };
-  services: { eyebrow: string; title: string; intro: string; does: string; idealFor: string; items: Service[] };
+  services: { eyebrow: string; text: string };
   process: { eyebrow: string; title: string; intro: string; steps: Step[] };
   works: { eyebrow: string; title: string; intro: string; view: string; project: string; items: Project[] };
   team: { eyebrow: string; title: string; intro: string };
-  fit: { eyebrow: string; title: string; titleAccent: string; yesTitle: string; noTitle: string; yes: string[]; no: string[] };
-  cta: {
-    eyebrow: string;
-    title: string;
-    body: string;
-    button: string;
-    note: string;
-    steps: string[];
-    directLabel: string;
-  };
+  fit: { title: string; items: string[] };
   footer: { cta: string; ctaAccent: string; email: string; instagram: string; base: string; rights: string };
 };
 
 // ─── Imagens: compartilhadas entre os idiomas, com alt traduzido ───────────
-const APT_IMAGES = (alt: string[]): ProjectImage[] => [
-  { src: "/portfolio/apt2507-living-01.jpg", alt: alt[0], wide: true },
-  { src: "/portfolio/apt2507-living-02.jpg", alt: alt[1] },
-  { src: "/portfolio/apt2507-office.jpg", alt: alt[2] },
-  { src: "/portfolio/apt2507-quarto-01.jpg", alt: alt[3] },
-  { src: "/portfolio/apt2507-quarto-02.jpg", alt: alt[4] },
-  { src: "/portfolio/apt2507-quarto-03.jpg", alt: alt[5] },
-  { src: "/portfolio/apt2507-banho-01.jpg", alt: alt[6] },
-  { src: "/portfolio/apt2507-banho-02.jpg", alt: alt[7] },
-  { src: "/portfolio/apt2507-banho-03.jpg", alt: alt[8] },
-  { src: "/portfolio/apt2507-moodboard.jpg", alt: alt[9] },
-  { src: "/portfolio/apt2507-detalhamento.jpg", alt: alt[10], wide: true },
-  { src: "/portfolio/apt2507-planta.jpg", alt: alt[11], wide: true },
+const NOTION_IMAGES = (alt: string[]): ProjectImage[] => [
+  { src: "/portfolio/notion-01.jpg", alt: alt[0], wide: true },
+  { src: "/portfolio/notion-02.jpg", alt: alt[1], wide: true },
+];
+
+const OPEN_IMAGES = (alt: string[]): ProjectImage[] => [
+  { src: "/portfolio/open-party-01.jpg", alt: alt[0], wide: true },
+  { src: "/portfolio/open-party-02.jpg", alt: alt[1], wide: true },
+  { src: "/portfolio/open-playroom-01.jpg", alt: alt[2], wide: true },
+  { src: "/portfolio/open-playroom-02.jpg", alt: alt[3], wide: true },
+  { src: "/portfolio/open-teens.jpg", alt: alt[4] },
 ];
 
 const CABANA_IMAGES = (alt: string[]): ProjectImage[] => [
   { src: "/portfolio/cabana06-01.jpg", alt: alt[0] },
   { src: "/portfolio/cabana06-02.jpg", alt: alt[1] },
   { src: "/portfolio/cabana06-03.jpg", alt: alt[2] },
+  { src: "/portfolio/cabana06-exec-01.jpg", alt: alt[3] },
+  { src: "/portfolio/cabana06-exec-02.jpg", alt: alt[4] },
+  { src: "/portfolio/cabana06-exec-03.jpg", alt: alt[5] },
 ];
 
-const TRAMONTINA_IMAGES = (alt: string[]): ProjectImage[] => [
-  { src: "/portfolio/tramontina-01.jpg", alt: alt[0], wide: true },
-  { src: "/portfolio/tramontina-02.jpg", alt: alt[1], wide: true },
-  { src: "/portfolio/tramontina-tecnico.jpg", alt: alt[2], wide: true },
-];
-
-const EBB_IMAGES = (alt: string[]): ProjectImage[] => [
-  { src: "/portfolio/ebb-hero.jpg", alt: alt[0], wide: true },
-  { src: "/portfolio/ebb-planta-02.jpg", alt: alt[1] },
-  { src: "/portfolio/ebb-planta-01.jpg", alt: alt[2] },
-];
-
-const ALMARE_IMAGES = (alt: string[]): ProjectImage[] => [
-  { src: "/portfolio/almare-fachada.jpg", alt: alt[0], wide: true },
-  { src: "/portfolio/almare-suite-01.jpg", alt: alt[1] },
-  { src: "/portfolio/almare-suite-02.jpg", alt: alt[2] },
-  { src: "/portfolio/almare-planta.jpg", alt: alt[3] },
+const APT_IMAGES = (alt: string[]): ProjectImage[] => [
+  { src: "/portfolio/apt2507-office.jpg", alt: alt[0] },
+  { src: "/portfolio/apt2507-living-02.jpg", alt: alt[1] },
+  { src: "/portfolio/apt2507-living-01.jpg", alt: alt[2], wide: true },
 ];
 
 // ════════════════════════════════════════════════════════════════════════
@@ -207,98 +180,9 @@ const pt: Dictionary = {
     caption: "Amanda, Eduarda B e Eduarda S, as sócias da AGES Creative Studio.",
   },
 
-  manifesto: {
-    eyebrow: "Nossa crença",
-    quote: "Design não se trata apenas de criar imagens, mas de ",
-    quoteAccent: "gerar clareza.",
-    body: "Quando as ideias são claramente definidas, comunicadas e sustentadas, melhores decisões são tomadas e melhores projetos são construídos.",
-  },
-
   services: {
     eyebrow: "O nosso serviço",
-    title: "Suporte em design para todas as etapas.",
-    intro:
-      "Oferecemos suporte modular e colaborativo, adaptável às diferentes etapas do projeto e localizações. Um apoio confiável e de alta qualidade: do conceito até a produção.",
-    does: "O que fazemos",
-    idealFor: "Ideal para",
-    items: [
-      {
-        id: "conceito",
-        index: "01",
-        title: "Conceito e definição de projeto",
-        lead: "Dando forma e direção ao seu projeto, do início ao fim.",
-        body: "Transformamos ideias iniciais em uma direção de design clara e estruturada. Essa fase busca compreender a essência do projeto, alinhar expectativas e estabelecer uma base conceitual sólida antes de avançar para o desenvolvimento detalhado.",
-        does: [
-          "Desenvolvimento de conceitos e narrativas de projeto",
-          "Mood boards para definir atmosfera, materiais e identidade visual",
-          "Estudo da organização espacial e possibilidades iniciais de layout",
-          "Análise de fatores do terreno e do contexto que influenciam as decisões",
-        ],
-        idealFor: [
-          "Projetos em estágio inicial",
-          "Briefings pouco claros ou ideias em evolução",
-          "Clientes que buscam direcionamento de design",
-          "Projetos que exigem forte alinhamento conceitual",
-        ],
-      },
-      {
-        id: "representacao",
-        index: "02",
-        title: "Design visual e representação",
-        lead: "Tornando ideias de design visíveis, compreensíveis e envolventes.",
-        body: "É onde os conceitos se tornam tangíveis. Traduzimos ideias em visuais claros e de alta qualidade, permitindo que clientes e stakeholders compreendam e se envolvam plenamente com o projeto. Mais do que imagens bonitas, criamos representações que apoiam a comunicação, a validação e a tomada de decisões.",
-        does: [
-          "Modelos 3D detalhados de espaços interiores e arquitetônicos",
-          "Renderizações realistas que comunicam materialidade, luz e atmosfera",
-          "Plantas humanizadas que comunicam layout e escala com clareza",
-          "Estudos visuais para elementos personalizados e soluções sob medida",
-        ],
-        idealFor: [
-          "Apresentações e aprovações com clientes",
-          "Validação e refinamento de design",
-          "Materiais de marketing e divulgação",
-          "Alinhamento de equipes em torno de uma visão comum",
-        ],
-      },
-      {
-        id: "producao",
-        index: "03",
-        title: "Produção e suporte técnico",
-        lead: "Apoiando a transição da concepção da ideia até a execução.",
-        body: "Traduzimos projetos aprovados em documentação clara e executável. A AGES atua como uma extensão das equipes de arquitetura e design, oferecendo suporte confiável de produção sem a necessidade de expandir a equipe interna.",
-        does: [
-          "Desenhos executivos e técnicos",
-          "Levantamento de medições do espaço",
-          "Plantas detalhadas, cortes, elevações e detalhamentos",
-          "Mobiliário sob medida e elementos integrados",
-          "Layouts de iluminação e documentação luminotécnica",
-        ],
-        idealFor: [
-          "Estúdios de arquitetura e design de interiores",
-          "Equipes que necessitam de maior capacidade de produção",
-          "Projetos em fase de execução",
-          "Equipes que precisam de detalhamento terceirizado",
-        ],
-      },
-      {
-        id: "completo",
-        index: "04",
-        title: "Suporte completo de projeto",
-        lead: "Trazendo seu sonho de espaço para a realidade.",
-        body: "Desenvolvimento integral de projetos de interiores ou arquitetura, do conceito inicial à documentação técnica. Serviço disponibilizado de forma seletiva e conduzido com análise cuidadosa de escopo, cronograma e alinhamento.",
-        does: [
-          "Liderança do desenvolvimento do conceito e da direção de design",
-          "Design visual e representação",
-          "Documentação técnica e executiva",
-          "Coordenação dos elementos de design ao longo das etapas",
-        ],
-        idealFor: [
-          "Projetos que exigem envolvimento coeso de ponta a ponta",
-          "Clientes que buscam um único parceiro de design",
-          "Projetos de interiores ou arquitetura alinhados à visão da AGES",
-        ],
-      },
-    ],
+    text: "A AGES se especializou em projetos de alto padrão, desenvolvidos em parceria com grandes construtoras, escritórios de arquitetura e empresas que levam suas marcas a eventos e convenções. Da arquitetura de interiores à arquitetura efêmera, criamos espaços que traduzem a identidade de cada cliente com estratégia, precisão e um olhar cuidadoso em cada detalhe.",
   },
 
   process: {
@@ -350,93 +234,72 @@ const pt: Dictionary = {
     eyebrow: "Portfólio",
     title: "Projetos selecionados.",
     intro:
-      "De apartamentos compactos a hotelaria e cabanas na serra. Clique em um projeto para ver imagens, plantas e detalhamentos.",
+      "Do residencial ao efêmero, projetos que unem estratégia e cuidado em cada detalhe. Clique em um projeto para ver as imagens.",
     view: "Ver",
     project: "Projeto",
     items: [
       {
-        slug: "apt-2507",
+        slug: "notion-house",
         index: "01",
-        title: "Apt 2507",
-        meta: "Apartamento 35 m²",
-        location: "São Paulo, Brasil",
-        scope: ["Projeto autoral", "Conceito ao executivo", "Modelagem 3D", "Renderização"],
-        body: "Projeto autoral da AGES: um apartamento compacto pensado para unir funcionalidade, conforto e personalidade em cada detalhe. Desenvolvemos todas as etapas: do conceito ao anteprojeto, projeto executivo, detalhamentos, modelagem 3D e renderização. De estilo contemporâneo e maximalista, explora contrastes: a área social em tons suaves de azul e madeira clara, o quarto com cores marcantes e formas expressivas, e o banheiro em verde e branco, atemporal.",
-        cover: "/portfolio/apt2507-quarto-01.jpg",
-        images: APT_IMAGES([
-          "Marcenaria integrada da sala e cozinha do Apt 2507",
-          "Vista ampla da área social integrada do Apt 2507",
-          "Home office sob medida aproveitando nicho existente",
-          "Quarto maximalista com teto rosa e lustre sputnik",
-          "Quarto com papel de parede listrado verde e galeria de quadros",
-          "Detalhe da cabeceira em veludo verde e mesa lateral em pedra",
-          "Banheiro em verde e branco com espelho orgânico iluminado",
-          "Vista do banheiro com bancada em mármore e marcenaria verde",
-          "Nichos iluminados do banheiro com revestimento hexagonal",
-          "Moodboard Bathroom Oasis com materiais e paleta",
-          "Prancha de detalhamento técnico do mobiliário do banheiro",
-          "Planta baixa humanizada do Apt 2507",
+        title: "Notion House",
+        meta: "Ativação de marca, arquitetura efêmera",
+        location: "Cidade do México, México",
+        scope: ["Arquitetura efêmera", "Experiência de marca", "Jornada do visitante"],
+        body: "Colaboramos com a Notion na Mexico Tech Week 2026, criando uma experiência de marca interativa dentro da Founders & Investors House, na Cidade do México. Desenvolvemos um espaço que refletisse a identidade da Notion e convidasse os visitantes a explorar, interagir e se conectar. Com uma jornada pensada para o visitante, o estande reuniu instalações da marca, uma estação de snacks e brindes e atividades interativas em que cada convidado podia criar a sua própria Notion face. Unindo elementos lúdicos, design funcional e uma linguagem visual contemporânea, demos vida à marca e celebramos um novo capítulo da AGES no cenário internacional.",
+        cover: "/portfolio/notion-01.jpg",
+        images: NOTION_IMAGES([
+          "Entrada do espaço da Notion na Mexico Tech Week com painel de boas-vindas",
+          "Instalações da marca Notion com cubos e quadro interativo",
+        ]),
+      },
+      {
+        slug: "open-apartments",
+        index: "02",
+        title: "Open Apartments",
+        meta: "Áreas comuns de condomínio",
+        location: "Residencial",
+        scope: ["Salões de festas", "Brinquedoteca", "Espaço teens e coworking"],
+        body: "Para este condomínio residencial, projetamos as áreas comuns como ambientes convidativos, que estimulam a convivência, a criatividade e as experiências do dia a dia. O projeto contemplou dois salões de festas, uma brinquedoteca e um espaço teens e coworking, cada um desenvolvido para equilibrar funcionalidade e uma atmosfera lúdica e contemporânea. Com uma abordagem de design moderna, layouts dinâmicos e materiais e cores cuidadosamente selecionados, criamos espaços vibrantes, flexíveis e acolhedores para moradores de todas as idades.",
+        cover: "/portfolio/open-party-01.jpg",
+        images: OPEN_IMAGES([
+          "Salão de festas 01 com mesas de jantar, cozinha e estar",
+          "Salão de festas 02 com estar, ilha e mesa compartilhada",
+          "Brinquedoteca com piscina de bolinhas, casinha e mesa infantil",
+          "Vista da brinquedoteca com escorregador e estante de livros",
+          "Espaço teens com letreiro neon OPEN e sofá",
         ]),
       },
       {
         slug: "cabana-06",
-        index: "02",
-        title: "Cozinha Cabana 06",
+        index: "03",
+        title: "Cabana 06",
         meta: "Cabana",
         location: "Nova Petrópolis, Brasil",
-        scope: ["Concepção de ambiente", "Modelagem 3D", "Detalhamento de marcenaria", "Imagens"],
-        body: "Neste projeto, exploramos os detalhes como forma de comunicar a funcionalidade, a materialidade e a experiência proposta para cada ambiente. Na cozinha da Cabana 6, o foco esteve no desenho dos móveis sob medida, pensados para unir estética, praticidade e aproveitamento inteligente do espaço, traduzindo com precisão cada escolha de projeto e sua relação com o uso cotidiano.",
+        scope: ["Concepção de ambiente", "Modelagem 3D", "Detalhamento de marcenaria", "Imagens", "Projeto executado"],
+        body: "Neste projeto, exploramos os detalhes como forma de comunicar a funcionalidade, a materialidade e a experiência proposta para cada ambiente. Na Cabana 6, o foco esteve no desenho dos móveis sob medida, pensados para unir estética, praticidade e aproveitamento inteligente do espaço. Desenvolvemos a concepção do ambiente, a modelagem 3D, o detalhamento de marcenaria e as imagens, traduzindo com precisão cada escolha de projeto e sua relação com o uso cotidiano. Primeiro, os renders entregues ao cliente para aprovação; depois, o projeto executado.",
         cover: "/portfolio/cabana06-01.jpg",
         images: CABANA_IMAGES([
-          "Cozinha da Cabana 06 com mesa de madeira e pendentes de fibra",
-          "Bancada e marcenaria sob medida da cozinha da cabana",
-          "Detalhe das prateleiras e utensílios da cozinha da cabana",
+          "Render da cozinha da Cabana 06 com mesa de madeira e pendentes de fibra",
+          "Render da bancada e marcenaria sob medida da cozinha",
+          "Render das prateleiras e utensílios da cozinha",
+          "Cozinha executada da Cabana 06 com mesa de jantar e janela",
+          "Marcenaria executada com geladeira e prateleiras",
+          "Detalhe executado da marcenaria com relógio e bancada",
         ]),
       },
       {
-        slug: "tramontina-kitchen",
-        index: "03",
-        title: "Tramontina Kitchen",
-        meta: "Apartamento 36 m², projeto conceitual",
-        location: "Projeto conceitual",
-        scope: ["Conceito", "Especificação técnica", "Modelagem 3D", "Renderização"],
-        body: "Um projeto conceitual de cozinha integrada em apartamento compacto, desenvolvido com especificação completa de equipamentos e marcenaria. A ilha central organiza o preparo e a convivência, enquanto a paleta clara em madeira e tons neutros amplia visualmente a metragem e conecta a cozinha ao estar.",
-        cover: "/portfolio/tramontina-01.jpg",
-        images: TRAMONTINA_IMAGES([
-          "Cozinha Tramontina com ilha central e mesa integrada",
-          "Vista da cozinha conceitual integrada ao estar",
-          "Prancha técnica com vistas e especificações da cozinha",
-        ]),
-      },
-      {
-        slug: "ebb-cabins",
+        slug: "apt-2507",
         index: "04",
-        title: "EBB Cabins",
-        meta: "Cabana 86,50 m²",
-        location: "Nova Petrópolis, Brasil",
-        scope: ["Concepção arquitetônica", "Plantas e fachadas", "Especificação de materiais", "Renderização"],
-        body: "Cabanas concebidas para se implantar com leveza no relevo, elevadas do solo por embasamento em pedra grês. O volume inclinado em ripado de bambu e madeira plástica reciclada abriga dois pavimentos com esquadrias de vidro duplo, lareira dupla face e estrutura em CLT e madeira laminada colada. Uma resposta contemporânea ao clima e à paisagem serrana.",
-        cover: "/portfolio/ebb-hero.jpg",
-        images: EBB_IMAGES([
-          "Implantação das cabanas EBB no campo aberto",
-          "Planta baixa humanizada do pavimento térreo da cabana EBB",
-          "Planta baixa humanizada do segundo pavimento da cabana EBB",
-        ]),
-      },
-      {
-        slug: "al-mare-hotel",
-        index: "05",
-        title: "Al Mare Hotel",
-        meta: "Suítes 29 m² e 59 m²",
-        location: "Xangri-Lá, Brasil",
-        scope: ["Concepção arquitetônica", "Estudo de implantação", "Modelagem", "Interiores"],
-        body: "Aqui exploramos a arquitetura hoteleira como forma de integrar experiência, paisagem e funcionalidade. Concebido para um terreno estratégico em Xangri-Lá, o Al Mare valoriza a proximidade com a praia e as áreas de preservação natural. A distribuição dos volumes e das áreas comuns foi pensada para promover conforto, convivência e conexão com a paisagem litorânea.",
-        cover: "/portfolio/almare-fachada.jpg",
-        images: ALMARE_IMAGES([
-          "Fachada do Al Mare Hotel ao entardecer",
-          "Suíte do Al Mare Hotel com pendentes de palha e paleta neutra",
-          "Suíte do hotel com painel ripado em madeira",
-          "Plantas humanizadas das suítes de 29 m² e 59 m²",
+        title: "Apartamento 2507",
+        meta: "Apartamento",
+        location: "São Paulo, Brasil",
+        scope: ["Home office sob medida", "Marcenaria", "Decoração", "Renderização"],
+        body: "Aproveitando um nicho existente na planta original do apartamento, criamos um pequeno home office integrado ao projeto. A proposta foi transformar uma área antes subutilizada em um espaço de trabalho funcional e agradável para a rotina, com design sob medida e integração visual com o restante da área social por meio de móveis soltos. A composição decorativa reforça a ideia de que até os menores espaços ganham um novo significado quando projetados com intenção.",
+        cover: "/portfolio/apt2507-office.jpg",
+        images: APT_IMAGES([
+          "Home office sob medida no nicho do Apartamento 2507",
+          "Sala de estar com sofá verde e vista para a cidade",
+          "Painel da TV com prateleiras e cozinha em madeira",
         ]),
       },
     ],
@@ -450,41 +313,14 @@ const pt: Dictionary = {
   },
 
   fit: {
-    eyebrow: "Antes de começar",
-    title: "Somos a ",
-    titleAccent: "escolha certa?",
-    yesTitle: "Somos a escolha certa se:",
-    noTitle: "Não somos a escolha certa se:",
-    yes: [
+    title: "Somos a escolha certa se:",
+    items: [
       "Você valoriza comunicação clara e colaboração ao longo do processo de design",
-      "Você entende que um design bem pensado exige tempo, refinamento e diálogo",
       "Você enxerga o design como um investimento estratégico, não apenas como uma entrega",
       "Você está aberto(a) a orientação profissional e soluções guiadas pelo design",
       "Você respeita prazos acordados e fornece feedback no tempo adequado",
       "Você busca um parceiro de design de longo prazo, não uma relação pontual",
     ],
-    no: [
-      "Você espera resultados imediatos, sem tempo para iteração ou refinamento",
-      "Você prioriza principalmente o menor preço em vez de qualidade e valor",
-      "Você prefere ditar todas as decisões de design sem flexibilidade",
-      "Você não consegue se comprometer com prazos ou fornecer feedback consistente",
-      "Você busca gestão de obra presencial ou condução de processos legais",
-      "Você vê o design como um complemento opcional, e não como parte central do sucesso do projeto",
-    ],
-  },
-
-  cta: {
-    eyebrow: "Solicitação de orçamento",
-    title: "Pronto para iniciar um novo projeto?",
-    body: "Preencha nosso formulário de orçamento. Ele nos ajuda a entender suas necessidades, prazos e como podemos apoiar você da melhor forma, para enviarmos uma proposta personalizada, pensada exatamente para o seu projeto.",
-    button: "Preencher formulário",
-    note: "O formulário abre em uma nova aba. Leva cerca de 3 minutos.",
-    steps: [
-      "Conte quem você é e como prefere ser contatado",
-      "Selecione os serviços que fazem sentido para o seu projeto",
-      "Descreva o projeto e aguarde nosso retorno por e-mail",
-    ],
-    directLabel: "Prefere falar direto?",
   },
 
   footer: {
@@ -568,98 +404,9 @@ const en: Dictionary = {
     caption: "Amanda, Eduarda B and Eduarda S, the partners of AGES Creative Studio.",
   },
 
-  manifesto: {
-    eyebrow: "What we believe",
-    quote: "Design is not only about creating images, but about ",
-    quoteAccent: "creating clarity.",
-    body: "When ideas are clearly defined, communicated and supported, better decisions are made and better projects get built.",
-  },
-
   services: {
-    eyebrow: "What we offer",
-    title: "Design support for every stage.",
-    intro:
-      "We offer modular, collaborative support that adapts to different project stages and locations. Reliable, high-quality help: from concept through to production.",
-    does: "What we do",
-    idealFor: "Ideal for",
-    items: [
-      {
-        id: "conceito",
-        index: "01",
-        title: "Concept and project definition",
-        lead: "Giving your project shape and direction, from start to finish.",
-        body: "We turn early ideas into a clear, structured design direction. This stage seeks to understand the essence of the project, align expectations and establish a solid conceptual foundation before moving into detailed development.",
-        does: [
-          "Development of project concepts and narratives",
-          "Mood boards defining atmosphere, materials and visual identity",
-          "Study of spatial organisation and initial layout possibilities",
-          "Analysis of site and context factors that shape decisions",
-        ],
-        idealFor: [
-          "Projects at an early stage",
-          "Unclear briefs or evolving ideas",
-          "Clients looking for design direction",
-          "Projects that demand strong conceptual alignment",
-        ],
-      },
-      {
-        id: "representacao",
-        index: "02",
-        title: "Visual design and representation",
-        lead: "Making design ideas visible, understandable and engaging.",
-        body: "This is where concepts become tangible. We translate ideas into clear, high-quality visuals, allowing clients and stakeholders to fully understand and engage with the project. More than beautiful images, we create representations that support communication, validation and decision-making.",
-        does: [
-          "Detailed 3D models of interior and architectural spaces",
-          "Realistic renders communicating materiality, light and atmosphere",
-          "Rendered floor plans that convey layout and scale clearly",
-          "Visual studies for bespoke elements and custom solutions",
-        ],
-        idealFor: [
-          "Client presentations and approvals",
-          "Design validation and refinement",
-          "Marketing and publicity material",
-          "Aligning teams around a shared vision",
-        ],
-      },
-      {
-        id: "producao",
-        index: "03",
-        title: "Production and technical support",
-        lead: "Supporting the move from idea to execution.",
-        body: "We translate approved designs into clear, buildable documentation. AGES works as an extension of architecture and design teams, offering reliable production support without the need to expand your in-house team.",
-        does: [
-          "Construction and technical drawings",
-          "On-site measurement surveys",
-          "Detailed plans, sections, elevations and details",
-          "Bespoke furniture and built-in elements",
-          "Lighting layouts and documentation",
-        ],
-        idealFor: [
-          "Architecture and interior design studios",
-          "Teams needing extra production capacity",
-          "Projects in the execution phase",
-          "Teams that need detailing outsourced",
-        ],
-      },
-      {
-        id: "completo",
-        index: "04",
-        title: "Full project support",
-        lead: "Bringing your dream space to life.",
-        body: "End-to-end development of interior or architecture projects, from initial concept to technical documentation. Offered selectively and undertaken after careful review of scope, timeline and alignment.",
-        does: [
-          "Leading concept development and design direction",
-          "Visual design and representation",
-          "Technical and construction documentation",
-          "Coordinating design elements across all stages",
-        ],
-        idealFor: [
-          "Projects that require cohesive end-to-end involvement",
-          "Clients looking for a single design partner",
-          "Interior or architecture projects aligned with the AGES vision",
-        ],
-      },
-    ],
+    eyebrow: "Our service",
+    text: "AGES specializes in high-end projects, developed in partnership with leading construction companies, architecture firms, and major brands that bring their activations to events and conventions. From interior architecture to ephemeral architecture, we create spaces that translate each client's identity with strategy, precision, and a careful eye for every detail.",
   },
 
   process: {
@@ -711,93 +458,72 @@ const en: Dictionary = {
     eyebrow: "Selected work",
     title: "Selected projects.",
     intro:
-      "From compact apartments to hospitality and cabins in the mountains. Click a project to see images, plans and detailing.",
+      "From residential to ephemeral, projects that bring together strategy and care in every detail. Click a project to see the images.",
     view: "View",
     project: "Project",
     items: [
       {
-        slug: "apt-2507",
+        slug: "notion-house",
         index: "01",
-        title: "Apt 2507",
-        meta: "35 m² apartment",
-        location: "São Paulo, Brazil",
-        scope: ["In-house project", "Concept to construction", "3D modelling", "Rendering"],
-        body: "An AGES in-house project: a compact apartment designed to combine functionality, comfort and personality in every detail. We developed every stage: from concept to schematic design, construction documentation, detailing, 3D modelling and rendering. Contemporary and maximalist in style, it plays with contrast: the living area in soft blues and pale wood, the bedroom in bold colour and expressive forms, and the bathroom in timeless green and white.",
-        cover: "/portfolio/apt2507-quarto-01.jpg",
-        images: APT_IMAGES([
-          "Built-in joinery of the living room and kitchen at Apt 2507",
-          "Wide view of the open-plan living area at Apt 2507",
-          "Bespoke home office fitted into an existing alcove",
-          "Maximalist bedroom with pink ceiling and sputnik chandelier",
-          "Bedroom with green striped wallpaper and a gallery wall",
-          "Detail of the green velvet headboard and stone side table",
-          "Green and white bathroom with a lit organic mirror",
-          "Bathroom view with marble countertop and green joinery",
-          "Lit bathroom niches with hexagonal tiling",
-          "Bathroom Oasis mood board with materials and palette",
-          "Technical detailing board for the bathroom furniture",
-          "Rendered floor plan of Apt 2507",
+        title: "Notion House",
+        meta: "Brand activation, ephemeral architecture",
+        location: "Mexico City, Mexico",
+        scope: ["Ephemeral architecture", "Brand experience", "Visitor journey"],
+        body: "We collaborated with Notion at Mexico Tech Week 2026, designing an interactive brand experience within the Founders & Investors House in Mexico City. We developed a space that reflected Notion's identity while encouraging visitors to explore, interact, and connect. Through a thoughtfully designed visitor journey, the stand featured branded installations, a snacks and merchandise station, and interactive activities where guests could create their own Notion faces. Combining playful elements, functional design, and a contemporary visual approach, we brought the brand to life while celebrating a new chapter for AGES on the international stage.",
+        cover: "/portfolio/notion-01.jpg",
+        images: NOTION_IMAGES([
+          "Entrance of the Notion space at Mexico Tech Week with a welcome panel",
+          "Notion branded installations with cubes and an interactive frame",
+        ]),
+      },
+      {
+        slug: "open-apartments",
+        index: "02",
+        title: "Open Apartments",
+        meta: "Residential complex amenities",
+        location: "Residential",
+        scope: ["Party rooms", "Children's playroom", "Teens and co-working space"],
+        body: "For this apartment complex, we designed the shared amenity spaces to create inviting environments that encourage connection, creativity, and everyday experiences. The project included two party rooms, a children's playroom, and a teens/co-working space, each thoughtfully developed to balance functionality with a playful and contemporary atmosphere. Through a modern design approach, dynamic layouts, and carefully selected materials and colors, we created spaces that feel vibrant, flexible, and welcoming for residents of all ages.",
+        cover: "/portfolio/open-party-01.jpg",
+        images: OPEN_IMAGES([
+          "Party room 01 with dining tables, kitchen and lounge",
+          "Party room 02 with lounge, island and shared table",
+          "Playroom with ball pit, play house and children's table",
+          "View of the playroom with slide and bookshelf",
+          "Teens space with OPEN neon sign and sofa",
         ]),
       },
       {
         slug: "cabana-06",
-        index: "02",
-        title: "Cabin 06 Kitchen",
+        index: "03",
+        title: "Cabin 06",
         meta: "Cabin",
         location: "Nova Petrópolis, Brazil",
-        scope: ["Space design", "3D modelling", "Joinery detailing", "Images"],
-        body: "In this project we explored detail as a way of communicating the functionality, materiality and experience proposed for each space. In the Cabin 6 kitchen, the focus was the design of bespoke furniture, conceived to combine aesthetics, practicality and smart use of space, translating each design decision and its relationship to everyday use with precision.",
+        scope: ["Spatial concept", "3D modeling", "Millwork detailing", "Renderings", "Executed project"],
+        body: "In this project, we explored details as a way to communicate functionality, materiality, and the intended experience of each space. In Cabin 6, our focus was on the design of custom-made furniture, conceived to combine aesthetics, practicality, and intelligent use of space. We developed the spatial concept, 3D modeling, millwork detailing, and visual renderings, aiming to precisely translate each design decision and its relationship with everyday use. First, the renders delivered to the client for approval; then, the executed project.",
         cover: "/portfolio/cabana06-01.jpg",
         images: CABANA_IMAGES([
-          "Cabin 06 kitchen with wooden table and fibre pendant lights",
-          "Bespoke countertop and joinery in the cabin kitchen",
-          "Detail of the shelving and utensils in the cabin kitchen",
+          "Render of the Cabin 06 kitchen with wooden table and fiber pendants",
+          "Render of the custom countertop and millwork",
+          "Render of the kitchen shelves and utensils",
+          "Executed Cabin 06 kitchen with dining table and window",
+          "Executed millwork with fridge and shelves",
+          "Executed millwork detail with clock and countertop",
         ]),
       },
       {
-        slug: "tramontina-kitchen",
-        index: "03",
-        title: "Tramontina Kitchen",
-        meta: "36 m² apartment, concept project",
-        location: "Concept project",
-        scope: ["Concept", "Technical specification", "3D modelling", "Rendering"],
-        body: "A concept project for an open-plan kitchen in a compact apartment, developed with full specification of appliances and joinery. The central island organises both cooking and gathering, while the light palette of wood and neutral tones visually expands the floor area and connects the kitchen to the living space.",
-        cover: "/portfolio/tramontina-01.jpg",
-        images: TRAMONTINA_IMAGES([
-          "Tramontina kitchen with central island and integrated table",
-          "View of the concept kitchen opening onto the living area",
-          "Technical board with elevations and kitchen specifications",
-        ]),
-      },
-      {
-        slug: "ebb-cabins",
+        slug: "apt-2507",
         index: "04",
-        title: "EBB Cabins",
-        meta: "86.50 m² cabin",
-        location: "Nova Petrópolis, Brazil",
-        scope: ["Architectural design", "Plans and elevations", "Material specification", "Rendering"],
-        body: "Cabins conceived to sit lightly on the terrain, raised off the ground on a sandstone base. The angled volume, clad in bamboo and recycled composite battens, houses two floors with double-glazed frames, a double-sided fireplace and a structure in CLT and glulam. A contemporary response to the climate and the mountain landscape.",
-        cover: "/portfolio/ebb-hero.jpg",
-        images: EBB_IMAGES([
-          "The EBB cabins sited in open countryside",
-          "Rendered ground floor plan of the EBB cabin",
-          "Rendered first floor plan of the EBB cabin",
-        ]),
-      },
-      {
-        slug: "al-mare-hotel",
-        index: "05",
-        title: "Al Mare Hotel",
-        meta: "29 m² and 59 m² suites",
-        location: "Xangri-Lá, Brazil",
-        scope: ["Architectural design", "Site strategy", "Modelling", "Interiors"],
-        body: "Here we explored hospitality architecture as a way of integrating experience, landscape and function. Designed for a strategic site in Xangri-Lá, Al Mare makes the most of its proximity to the beach and to protected natural areas. The distribution of volumes and shared areas was conceived to encourage comfort, community and connection with the coastal landscape.",
-        cover: "/portfolio/almare-fachada.jpg",
-        images: ALMARE_IMAGES([
-          "Al Mare Hotel façade at dusk",
-          "Al Mare Hotel suite with straw pendant lights and neutral palette",
-          "Hotel suite with slatted timber panelling",
-          "Rendered plans of the 29 m² and 59 m² suites",
+        title: "Apartment 2507",
+        meta: "Apartment",
+        location: "São Paulo, Brazil",
+        scope: ["Custom home office", "Millwork", "Decor", "Rendering"],
+        body: "Taking advantage of an existing niche in the apartment's original layout, we created a small integrated home office space within the project. The proposal was to transform a previously underutilized area into a functional and pleasant workspace for daily routines, with custom design and visual integration with the rest of the social area through freestanding furniture. The decorative composition reinforces the idea that even the smallest spaces can gain new meaning when designed with intention.",
+        cover: "/portfolio/apt2507-office.jpg",
+        images: APT_IMAGES([
+          "Custom home office in the niche of Apartment 2507",
+          "Living room with green sofa and city view",
+          "TV wall with shelves and wooden kitchen",
         ]),
       },
     ],
@@ -811,41 +537,14 @@ const en: Dictionary = {
   },
 
   fit: {
-    eyebrow: "Before we start",
-    title: "Are we the ",
-    titleAccent: "right fit?",
-    yesTitle: "We are the right fit if:",
-    noTitle: "We are not the right fit if:",
-    yes: [
+    title: "We are the right fit if:",
+    items: [
       "You value clear communication and collaboration throughout the design process",
-      "You understand that considered design takes time, refinement and dialogue",
       "You see design as a strategic investment, not merely a deliverable",
       "You are open to professional guidance and design-led solutions",
       "You respect agreed deadlines and give feedback in good time",
       "You are looking for a long-term design partner, not a one-off transaction",
     ],
-    no: [
-      "You expect immediate results, with no time for iteration or refinement",
-      "You prioritise the lowest price above quality and value",
-      "You prefer to dictate every design decision with no flexibility",
-      "You cannot commit to deadlines or give consistent feedback",
-      "You are looking for on-site construction management or legal processes",
-      "You see design as an optional extra rather than central to the project's success",
-    ],
-  },
-
-  cta: {
-    eyebrow: "Request a quote",
-    title: "Ready to start a new project?",
-    body: "Fill in our quote form. It helps us understand your needs, your timeline and how we can best support you, so we can send a tailored proposal, built specifically around your project.",
-    button: "Open the form",
-    note: "The form opens in a new tab. It takes about 3 minutes.",
-    steps: [
-      "Tell us who you are and how you prefer to be contacted",
-      "Select the services that fit your project",
-      "Describe the project and wait for our reply by email",
-    ],
-    directLabel: "Prefer to talk directly?",
   },
 
   footer: {
