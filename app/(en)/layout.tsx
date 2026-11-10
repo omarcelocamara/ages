@@ -1,5 +1,5 @@
 import { CONTENT } from "@/lib/content";
-import { bebas, museo } from "@/lib/fonts";
+import { museo } from "@/lib/fonts";
 import { buildMetadata, viewport } from "@/lib/metadata";
 import "../globals.css";
 
@@ -8,7 +8,7 @@ export { viewport };
 
 export default function EnLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={CONTENT.en.htmlLang} className={`${museo.variable} ${bebas.variable}`}>
+    <html lang={CONTENT.en.htmlLang} className={museo.variable}>
       <body>{children}</body>
     </html>
   );

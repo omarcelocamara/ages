@@ -17,7 +17,7 @@
   --ink: #1b0d0c;
 
   --font-display: var(--font-museo), "Trebuchet MS", system-ui, sans-serif;
-  --font-label: var(--font-bebas), "Helvetica Neue", Impact, sans-serif;
+  --font-label: var(--font-body);
   --font-body: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
 
   --shell: min(1440px, 100% - 2 * var(--gutter));
@@ -233,6 +233,10 @@ h4 {
   gap: 2rem;
 }
 
+.nav__logo {
+  flex-shrink: 0;
+}
+
 .nav__logo img {
   height: 26px;
   width: auto;
@@ -262,8 +266,8 @@ h4 {
 .nav__link {
   position: relative;
   font-family: var(--font-label);
-  font-size: 0.94rem;
-  letter-spacing: 0.2em;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--cream) 82%, transparent);
   transition: color 0.35s var(--ease);
@@ -355,7 +359,7 @@ h4 {
 }
 
 .drawer a {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(1.9rem, 8vw, 3.2rem);
   font-weight: 300;
   color: var(--cream);
@@ -386,9 +390,10 @@ h4 {
   background: var(--btn-bg);
   color: var(--btn-fg);
   font-family: var(--font-label);
-  font-size: 0.95rem;
-  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+  white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   isolation: isolate;
@@ -861,7 +866,7 @@ h4 {
 }
 
 .services-text__body {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: clamp(1.6rem, 1rem + 2.4vw, 3.1rem);
   line-height: 1.22;
@@ -1432,7 +1437,7 @@ h4 {
   gap: 0.6rem;
   padding: 0.7rem 1.4rem;
   border-radius: 999px;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: clamp(1.05rem, 0.95rem + 0.7vw, 1.6rem);
   letter-spacing: -0.02em;
