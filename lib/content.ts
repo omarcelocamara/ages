@@ -55,7 +55,6 @@ export type Dictionary = {
   meta: { title: string; description: string; keywords: string[] };
   nav: { studio: string; services: string; process: string; works: string; team: string; cta: string };
   hero: {
-    eyebrow: string;
     line1: string;
     line2: string;
     line2Accent: string;
@@ -171,13 +170,12 @@ const pt: Dictionary = {
   },
 
   hero: {
-    eyebrow: "Estúdio criativo de arquitetura, Porto Alegre, RS",
-    line1: "Ideias que",
-    line2: "se tornam ",
-    line2Accent: "projeto.",
+    line1: "Serviços terceirizados",
+    line2: "para projetos de ",
+    line2Accent: "arquitetura",
     statement:
-      " que arquitetos, escritórios e estudantes procuram para transformar projetos e ideias em apresentações impecáveis.",
-    statementStrong: "Somos o braço extra",
+      " é um estúdio de arquitetura e design dedicado a transformar ideias em espaços bem resolvidos, funcionais e visualmente marcantes.",
+    statementStrong: "AGES Creative Studio",
     ctaPrimary: "Solicitar orçamento",
     ctaSecondary: "Ver portfólio",
     scroll: "Role para conhecer",
@@ -537,13 +535,12 @@ const en: Dictionary = {
   },
 
   hero: {
-    eyebrow: "Architecture creative studio, Porto Alegre, RS",
-    line1: "Ideas that",
-    line2: "become ",
-    line2Accent: "design.",
+    line1: "Outsourcing services",
+    line2: "for architecture ",
+    line2Accent: "design",
     statement:
-      " that architects, studios and students turn to in order to transform projects and ideas into flawless presentations.",
-    statementStrong: "We are the extra pair of hands",
+      " is an architecture and design studio dedicated to transforming ideas into well-resolved, functional, and visually striking spaces.",
+    statementStrong: "AGES Creative Studio",
     ctaPrimary: "Request a quote",
     ctaSecondary: "View work",
     scroll: "Scroll to explore",

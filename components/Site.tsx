@@ -20,10 +20,6 @@ export default function Site({ lang }: { lang: Lang }) {
           <div className="hero__grid" aria-hidden="true" />
 
           <div className="hero__inner">
-            <Reveal variant="lines" as="div" delay={0.15}>
-              <span className="eyebrow">{t.hero.eyebrow}</span>
-            </Reveal>
-
             <h1 className="hero__wordmark">
               <Reveal variant="lines" as="span" delay={0.25}>
                 <span>{t.hero.line1}</span>
