@@ -23,7 +23,8 @@ export const QUOTE_FORM: Record<Lang, string> = {
 export const PARTNERS: { name: string; linkedin?: string }[] = [
   { name: "Amanda Guerses", linkedin: "https://www.linkedin.com/in/amandaguerses/" },
   { name: "Eduarda Saldanha", linkedin: "https://www.linkedin.com/in/eduardaseverosaldanha/" },
-  { name: "Eduarda Baptista" },
+  // Sem perfil pessoal: leva para a página da AGES no LinkedIn.
+  { name: "Eduarda Baptista", linkedin: "https://www.linkedin.com/company/agescreativestudio/posts/?feedView=all" },
 ];
 
 export type ProjectImage = { src: string; alt: string; wide?: boolean };

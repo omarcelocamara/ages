@@ -225,7 +225,7 @@ export default function Site({ lang }: { lang: Lang }) {
             </div>
 
             <div className="team">
-              {["/socias/socias-riso.jpg", "/socias/socias-sofa.jpg", "/socias/socias-branco-02.jpg"].map(
+              {["/socias/socias-riso.jpg", "/socias/socias-branco-01.jpg", "/socias/socias-branco-02.jpg"].map(
                 (src, i) => (
                   <Reveal key={src} variant="mask" delay={i * 0.1}>
                     <figure>
